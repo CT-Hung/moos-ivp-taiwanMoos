@@ -30,3 +30,25 @@
 *.exe
 *.out
 *.app
+
+# add by CT-Hung
+*~
+*.bag
+*.pcd
+*.png
+*.pyc
+*.swp
+*.swo
+*.moos++
+*.urdf
+*.xacro
+MOOSLog*
+catkin_ws/build/
+catkin_ws/install/
+catkin_ws/devel/
+catkin_ws/.catkin_workspace
+build/*
+lib/*
+bin/*
+*.vscode
+*.caffemodel
