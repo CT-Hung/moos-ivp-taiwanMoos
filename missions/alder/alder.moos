@@ -6,7 +6,7 @@ Simulator  = true
 
 Community  = alder
 
-MOOSTimeWarp = 1
+MOOSTimeWarp = 5
 
 LatOrigin  = 43.825300 
 LongOrigin = -70.330400 
@@ -156,4 +156,14 @@ ProcessConfig = pNodeReporter
   AppTick	= 2
   CommsTick	= 2
   VESSEL_TYPE   = KAYAK
+}
+
+
+//------------------------------------------
+// pOdometry config block
+
+ProcessConfig = pOdometry
+{
+  AppTick	= 4
+  CommsTick	= 4
 }
