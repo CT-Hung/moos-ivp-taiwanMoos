@@ -52,3 +52,6 @@ lib/*
 bin/*
 *.vscode
 *.caffemodel
+
+# others
+*.DS_Store
