@@ -158,4 +158,3 @@ bool Odometry::buildReport()
 
   return(true);
 }
-
