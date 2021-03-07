@@ -17,6 +17,12 @@ using namespace std;
 
 Odometry::Odometry()
 {
+  m_first_reading = true;
+  m_current_x = 0;
+  m_current_y = 0;
+  m_previous_x = 0;
+  m_previous_y = 0;
+  m_total_distance = 0;
 }
 
 //---------------------------------------------------------
@@ -37,6 +43,19 @@ bool Odometry::OnNewMail(MOOSMSG_LIST &NewMail)
   for(p=NewMail.begin(); p!=NewMail.end(); p++) {
     CMOOSMsg &msg = *p;
     string key    = msg.GetKey();
+    double number = msg.GetDouble();
+
+    if(key == "NAV_X"){
+      m_first_reading = true;
+      m_previous_x = m_current_x;
+      m_current_x = number;
+    }
+
+    if(key == "NAV_Y"){
+      m_first_reading = true;
+      m_previous_y = m_current_y;
+      m_current_y = number;
+    }
 
 #if 0 // Keep these around just for template
     string comm  = msg.GetCommunity();
@@ -74,7 +93,13 @@ bool Odometry::OnConnectToServer()
 bool Odometry::Iterate()
 {
   AppCastingMOOSApp::Iterate();
-  // Do your thing here!
+  if(m_first_reading){
+    m_total_distance += sqrt(((m_current_x-m_previous_x)*(m_current_x-m_previous_x))+((m_current_y - m_previous_y)*(m_current_y - m_previous_y)));
+    Notify("ODOMETRY_DIST", m_total_distance);
+  }
+  else{
+    m_total_distance = 0;
+  }
   AppCastingMOOSApp::PostReport();
   return(true);
 }
@@ -123,6 +148,8 @@ void Odometry::registerVariables()
 {
   AppCastingMOOSApp::RegisterVariables();
   // Register("FOOBAR", 0);
+  Register("NAV_X", 0.2);
+  Register("NAV_Y", 0.2);
 }
 
 
@@ -131,16 +158,7 @@ void Odometry::registerVariables()
 
 bool Odometry::buildReport() 
 {
-  m_msgs << "============================================" << endl;
-  m_msgs << "File:                                       " << endl;
-  m_msgs << "============================================" << endl;
-
-  ACTable actab(4);
-  actab << "Alpha | Bravo | Charlie | Delta";
-  actab.addHeaderLines();
-  actab << "one" << "two" << "three" << "four";
-  m_msgs << actab.getFormattedString();
-
+  m_msgs << "Distance: " << m_total_distance << endl;
   return(true);
 }
 
