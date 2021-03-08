@@ -55,3 +55,4 @@ bin/*
 
 # others
 *.DS_Store
+*.icloud
