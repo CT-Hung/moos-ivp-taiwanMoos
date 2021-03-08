@@ -157,3 +157,12 @@ ProcessConfig = pNodeReporter
   CommsTick	= 2
   VESSEL_TYPE   = KAYAK
 }
+
+//-----------------------------------------
+// pOdometry config block
+
+ProcessCoonfig = pNodeReporter
+{
+  AppTick      = 4
+  CommsTick    = 4
+)

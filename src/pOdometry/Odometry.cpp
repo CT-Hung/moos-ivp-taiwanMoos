@@ -61,10 +61,10 @@ bool Odometry::OnNewMail(MOOSMSG_LIST &NewMail)
      else if (key =="NAV_Y")
        m_current_y = msg.GetDouble();		
 
-     if(key == "FOO") 
+     if(key == "NAV_X") 
        cout << "great!";
 
-     else if(key != "APPCAST_REQ") // handled by AppCastingMOOSApp
+     else if(key != "NAV_X"&& key != "NAV_Y") // handled by AppCastingMOOSApp
        reportRunWarning("Unhandled Mail: " + key);
    }
    
@@ -119,22 +119,21 @@ bool Odometry::OnStartUp()
   AppCastingMOOSApp::OnStartUp();
 
   STRING_LIST sParams;
-  m_MissionReader.EnableVerbatimQuoting(false);
-  if(!m_MissionReader.GetConfiguration(GetAppName(), sParams))
-    reportConfigWarning("No config block found for " + GetAppName());
-
-  STRING_LIST::iterator p;
+  m_MissionReader.EnableVerbatimQuoting(true);
+ // if(!m_MissionReader.GetConfiguration(GetAppName(), sParams))
+ //   reportConfigWarning("No config block found for " + GetAppName());
+ STRING_LIST::iterator p;
   for(p=sParams.begin(); p!=sParams.end(); p++) {
     string orig  = *p;
     string line  = *p;
     string param = tolower(biteStringX(line, '='));
     string value = line;
-
     bool handled = false;
-    if(param == "foo") {
+ 
+    if(param == "nav_x") {
       handled = true;
     }
-    else if(param == "bar") {
+    else if(param == "nav_y") {
       handled = true;
     }
 
@@ -168,6 +167,7 @@ bool Odometry::buildReport()
   m_msgs << "File:                                       " << endl;
   m_msgs << "============================================" << endl;
 
+  m_msgs << "Total distance is : " <<m_total_distance<< endl;
   ACTable actab(4);
   actab << "Alpha | Bravo | Charlie | Delta";
   actab.addHeaderLines();
