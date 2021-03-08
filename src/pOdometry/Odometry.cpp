@@ -120,8 +120,8 @@ bool Odometry::OnStartUp()
 
   STRING_LIST sParams;
   m_MissionReader.EnableVerbatimQuoting(true);
- // if(!m_MissionReader.GetConfiguration(GetAppName(), sParams))
- //   reportConfigWarning("No config block found for " + GetAppName());
+  if(!m_MissionReader.GetConfiguration(GetAppName(), sParams))
+    reportConfigWarning("No config block found for " + GetAppName());
  STRING_LIST::iterator p;
   for(p=sParams.begin(); p!=sParams.end(); p++) {
     string orig  = *p;
@@ -137,8 +137,8 @@ bool Odometry::OnStartUp()
       handled = true;
     }
 
-    if(!handled)
-      reportUnhandledConfigWarning(orig);
+//    if(!handled)
+//      reportUnhandledConfigWarning(orig);
 
   }
   
