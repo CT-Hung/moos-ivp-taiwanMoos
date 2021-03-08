@@ -161,7 +161,7 @@ ProcessConfig = pNodeReporter
 //-----------------------------------------
 // pOdometry config block
 
-ProcessCoonfig = pOdometry
+ProcessConfig = pOdometry
 {
   AppTick      = 4
   CommsTick    = 4
