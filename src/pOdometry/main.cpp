@@ -1,8 +1,8 @@
 /************************************************************/
-/*    NAME: Jane Doe                                              */
-/*    ORGN: MIT                                             */
-/*    FILE: main.cpp                                        */
-/*    DATE:                                                 */
+/*    NAME: Chao-Chun Hsu                                              */
+/*    ORGN: MIT, Cambridge MA                               */
+/*    FILE: main.cpp, Cambridge MA                          */
+/*    DATE: December 29th, 1963                             */
 /************************************************************/
 
 #include <string>

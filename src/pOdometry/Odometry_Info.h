@@ -1,8 +1,8 @@
 /****************************************************************/
-/*   NAME: Jane Doe                                             */
-/*   ORGN: MIT Cambridge MA                                     */
+/*   NAME: Chao-Chun Hsu                                             */
+/*   ORGN: MIT, Cambridge MA                                    */
 /*   FILE: Odometry_Info.h                                      */
-/*   DATE: Dec 29th 1963                                        */
+/*   DATE: Dececmber 29th, 1963                                 */
 /****************************************************************/
 
 #ifndef Odometry_INFO_HEADER

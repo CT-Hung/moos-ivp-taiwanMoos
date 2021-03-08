@@ -153,7 +153,16 @@ ProcessConfig = pMarineViewer
 
 ProcessConfig = pNodeReporter
 {
-  AppTick	= 2
-  CommsTick	= 2
+  AppTick	      = 2
+  CommsTick	    = 2
   VESSEL_TYPE   = KAYAK
+}
+
+//------------------------------------------
+// pOdometry config block
+
+ProcessConfig = pOdometry
+{
+  AppTick  = 4
+  CommTick = 4
 }

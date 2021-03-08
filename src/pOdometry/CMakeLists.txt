@@ -1,6 +1,6 @@
 #--------------------------------------------------------
 # The CMakeLists.txt for:                       pOdometry
-# Author(s):                              Jane Doe
+# Author(s):                              Chao-Chun Hsu
 #--------------------------------------------------------
 
 SET(SRC
@@ -13,6 +13,7 @@ ADD_EXECUTABLE(pOdometry ${SRC})
 
 TARGET_LINK_LIBRARIES(pOdometry
    ${MOOS_LIBRARIES}
+   apputil
    mbutil
    m
    pthread)
