@@ -1,8 +1,8 @@
 /************************************************************/
-/*    NAME: Jane Doe                                              */
-/*    ORGN: MIT, Cambridge MA                               */
-/*    FILE: Odometry.cpp                                        */
-/*    DATE: December 29th, 1963                             */
+/*    NAME: Sin-Kiat Lim                                    */
+/*    ORGN: MIT                                             */
+/*    FILE: Odometry.cpp                                    */
+/*    DATE: 2021/03/08                                      */
 /************************************************************/
 
 #include <iterator>
