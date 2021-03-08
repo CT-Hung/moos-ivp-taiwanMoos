@@ -148,8 +148,8 @@ void Odometry::registerVariables()
 {
   AppCastingMOOSApp::RegisterVariables();
   // Register("FOOBAR", 0);
-  Register("NAV_X", 0.2);
-  Register("NAV_Y", 0.2);
+  Register("NAV_X", 0.1);
+  Register("NAV_Y", 0.1);
 }
 
 

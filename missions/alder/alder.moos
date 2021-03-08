@@ -66,6 +66,12 @@ ProcessConfig = uProcessWatch
 //------------------------------------------
 // pHelmIvP config block
 
+ProcessConfig = pOdometry
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+
 ProcessConfig = pHelmIvP
 {
   AppTick    = 4
