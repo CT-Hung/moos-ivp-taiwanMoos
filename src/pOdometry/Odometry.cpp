@@ -94,7 +94,7 @@ bool Odometry::Iterate()
 {
   AppCastingMOOSApp::Iterate();
   if(m_first_reading){
-    m_total_distance += sqrt((m_current_x - m_previous_x)*(m_current_x - m_previous_x) + (m_current_y - m_previous_y)*(m_current_y - m_previous_y));
+    m_total_distance += sqrt(pow((m_current_x-m_previous_x), 2)+pow((m_current_y - m_previous_y),2));
     Notify("ODOMETRY_DIST", m_total_distance);
   }
   else{
@@ -148,8 +148,8 @@ void Odometry::registerVariables()
 {
   AppCastingMOOSApp::RegisterVariables();
   // Register("FOOBAR", 0);
-  Register("NAV_X", 0.2);
-  Register("NAV_Y", 0.2);
+  Register("NAV_X", 0);
+  Register("NAV_Y", 0);
 }
 
 
