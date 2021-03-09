@@ -166,8 +166,8 @@ void Odometry::registerVariables()
   // Register("FOOBAR", 0);
 
   //lab04
-  Register("NAV_X", 0.2);
-  Register("NAV_Y", 0.2);
+  Register("NAV_X", 0);
+  Register("NAV_Y", 0);
   //end
 }
 
