@@ -72,7 +72,7 @@ bool Odometry::OnNewMail(MOOSMSG_LIST &NewMail)
      if(key == "FOO") 
        cout << "great!";
 
-     else if(key != "APPCAST_REQ") // handled by AppCastingMOOSApp
+     else if(key != "NAV_Y" && key != "NAV_X") // handled by AppCastingMOOSApp
        reportRunWarning("Unhandled Mail: " + key);
    }
 	
