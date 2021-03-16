@@ -1,0 +1,27 @@
+ServerHost = localhost
+ServerPort = 9000
+Simulator = true
+
+Community = prime
+
+LatOrigin  = 43.825300 
+LongOrigin = -70.330400 
+
+//------------------------------------------
+// Antler configuration  block
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB		@ NewConsole = false
+  Run = pPrimeFactor    @ NewConsole = false
+}
+
+//------------------------------------------
+// pPrimeFactor config block
+
+ProcessConfig = pPrimeFactor
+{
+  AppTick  = 4
+  CommTick = 4
+}
