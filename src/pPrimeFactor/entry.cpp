@@ -1,6 +1,6 @@
 #include "stdint.h"
 #include <cstdlib> // potentially should've just included these in primeEntry.h but when I was doing that I was getting weird errors about uint64 not being a type
-#include "PrimeEntry.h"
+#include "entry.h"
 
 using namespace std;
 
@@ -110,7 +110,7 @@ string PrimeEntry::getReport()
 
     }
 
-  num_result += ",username=ltencate";
+  num_result += ",username=bory";
 
   return num_result;
     

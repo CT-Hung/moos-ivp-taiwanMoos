@@ -10,7 +10,7 @@
 
 #include "MOOS/libMOOS/MOOSLib.h"
 #include <list>
-#include "PrimeEntry.h" 
+#include "entry.h" 
 
 
 using namespace std;
