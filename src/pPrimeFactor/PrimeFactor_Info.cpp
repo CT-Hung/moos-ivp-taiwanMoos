@@ -5,7 +5,6 @@
 /*   DATE: Dec 29th 1963                                        */
 /****************************************************************/
 
-#include <cstdlib>
 #include <iostream>
 #include "PrimeFactor_Info.h"
 #include "ColorParse.h"

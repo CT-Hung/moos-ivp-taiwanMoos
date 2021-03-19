@@ -1,4 +1,4 @@
-//------------------------------------------------
+/------------------------------------------------
 // pPrimeFactor config block
 
 
@@ -58,5 +58,3 @@ ProcessConfig = pLogger
   LOG = NUM_RESULT @ 0
   LOG = NUM_VALUE  @ 0
 }
-
-

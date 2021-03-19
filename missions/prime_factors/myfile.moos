@@ -1,0 +1,50 @@
+ServerHost = localhost
+ServerPort = 9000
+Simulator  = true
+
+Community  = alder
+
+MOOSTimeWarp = 1
+
+LatOrigin  = 43.825300 
+LongOrigin = -70.330400 
+
+//------------------------------------------
+// Antler configuration  block
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 200
+
+  Run = uXMS		@ NewConsole = true
+  Run = uTimerScript     @ NewConsole = false
+}
+
+//------------------------------------------
+// uXMS config block
+
+ProcessConfig = uXMS
+{
+  AppTick	= 10
+  CommsTick	= 10
+
+  VAR         = NUM_VALUE, NUMBER_RESULT, PRIME_FACTOR
+  COLOR_MAP   = PRIME_FACTOR, blue
+  COLOR_MAP   = NUM_VALUE, red
+  HISTORY_VAR = PRIME_FACTOR
+  HISTORY_VAR = NUM_VALUE
+}
+
+//------------------------------------------
+// uTimerScript config block
+
+ProcessConfig = uTimerScript
+{
+  paused = false
+
+  rand_var    = varname=RND_VAL, min=0, max=100, key=at_post, snap=1
+
+  event = var=NUM_VALUE, val="$[RND_VAL]", time=0, amt=10
+
+  reset_max  = nolimit
+  reset_time = all-posted
+}
