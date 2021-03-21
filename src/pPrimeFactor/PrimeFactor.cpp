@@ -56,12 +56,12 @@ bool PrimeFactor::OnNewMail(MOOSMSG_LIST &NewMail)
     bool   mdbl  = msg.IsDouble();
     bool   mstr  = msg.IsString();
 #endif
-    cout<<"checkpoint2"<<endl;
+    
     uint64_t value;
     if(key == "NUM_VALUE")
      {
        value = stoull(sval);
-       cout<<value<<endl;
+       
        Timer.setReceivedIndex(1);
        if(value<=1000)
 	{
@@ -99,7 +99,7 @@ bool PrimeFactor::Iterate()
 {
   AppCastingMOOSApp::Iterate();
   // Do your thing here!
-  cout<<"checkpoint3"<<endl;
+  
   bool small_num=false;
   bool stop = false;
   list<string>::iterator k,p,q,k_l,p_l,q_l;
@@ -110,7 +110,7 @@ bool PrimeFactor::Iterate()
  
   if (IF_FINISH == false)
     {
-       cout<<"interrupt"<<endl;
+       
        interrupt = true;
        PRIME_BACKUP =  CURRENT_PRIME;
        backup_NUM = NUM_l;
@@ -129,7 +129,7 @@ if ((NUM_LIST.size() != 0|| NUM_LIST_LARGE.size() != 0)&& stop==false)
     }
   if(small_num==true)
    {
-     cout<< "checkpoint6"<<endl;
+     
      for(p=NUM_LIST.begin();p!=NUM_LIST.end();p++)
    {
      NUM = stoull(*p);
@@ -165,7 +165,6 @@ if ((NUM_LIST.size() != 0|| NUM_LIST_LARGE.size() != 0)&& stop==false)
         for(q=CURRENT_PRIME.begin();q!=CURRENT_PRIME.end();q++)
        {
          m_prime<<*q<<":";
-	 cout<<*q<<"in list"<<endl;
        }
        m_prime<<",username=shane";
        m_prime>>m_result;
@@ -188,14 +187,12 @@ if ((NUM_LIST.size() != 0|| NUM_LIST_LARGE.size() != 0)&& stop==false)
      Timer.setOriginalVal(NUM_l);
      if (interrupt)
      {
-	cout<< "checkpoint 5";
 	NUM_l = backup_NUM;
 	CURRENT_PRIME = PRIME_BACKUP;
 	interrupt = false;
      }
      for(j=2;j<100000000;)
      {
-      cout<<"checkpoint 4"<<endl;
       if(!(NUM_l%j))
       {
 	CURRENT_PRIME.push_back(to_string(j));
@@ -230,7 +227,6 @@ if ((NUM_LIST.size() != 0|| NUM_LIST_LARGE.size() != 0)&& stop==false)
         for(q_l=CURRENT_PRIME.begin();q_l!=CURRENT_PRIME.end();q_l++)
         {
           m_prime_l<<*q_l<<":";
-	  cout<<*q_l<<"in list"<<endl;
         }
         m_prime_l<<",username=shane";
         m_prime_l>>m_result_l;
@@ -309,7 +305,6 @@ void PrimeFactor::registerVariables()
   AppCastingMOOSApp::RegisterVariables();
   // Register("FOOBAR", 0);
   Register("NUM_VALUE", 0);
-  cout<<"checkpoint1"<<endl;
 }
 
 
