@@ -7,6 +7,8 @@
 
 #include <iterator>
 #include <string>
+#include <cstdint>
+#include <sstream>
 #include "MBUtils.h"
 #include "PrimeFactor.h"
 
@@ -17,7 +19,8 @@ using namespace std;
 
 PrimeFactor::PrimeFactor()
 {
-  m_output_msg = "";
+  m_rcv_idx = 0;
+  m_cal_idx = 0;
   m_iterations = 0;
   m_timewarp = 1;
 }
@@ -53,10 +56,25 @@ bool PrimeFactor::OnNewMail(MOOSMSG_LIST &NewMail)
 #endif
     
     string key = msg.GetKey();
-    unsigned int value = stoul(msg.GetString());
 
-    if(key == "NUM_VALUE"){
-      m_nums.push_front(value);
+    if(key == "NUM_VALUE")
+    {
+      PrimeEntry mprime;
+      uint64_t numerical_val = strtoul(msg.GetString().c_str(), NULL, 0);
+
+      m_rcv_idx++;
+      mprime.setOriginalVal(numerical_val);
+      mprime.setReceivedIndex(m_rcv_idx);
+      mprime.setCalculatedIndex(0);
+      mprime.setDone(false);
+      mprime.m_started = false;
+      mprime.setRTime(MOOSTime());
+
+      m_num_val_msg.push_back(mprime);
+    }
+    else
+    {
+      cout << "Incorrect message type for this app. See help..." << endl;
     }
 
    }
@@ -81,21 +99,32 @@ bool PrimeFactor::Iterate()
 {
   AppCastingMOOSApp::Iterate();
 
-  int cur_num;
-  string m_output_msg = "";
-  for(int c = 0; c < m_nums.size(); c++){
-    cur_num = m_nums.front();
-    m_nums.pop_front();
-    if(cur_num%2 == 0){
-      m_output_msg += to_string(cur_num) + " is even.\t";
-    }else{
-      m_output_msg += to_string(cur_num) + " is odd.\t";
+  if(m_num_val_msg.size() > 0)
+  {
+    for(std::list<PrimeEntry>::iterator it = m_num_val_msg.begin(); it != m_num_val_msg.end();)
+    {
+      PrimeEntry& entry = *it;
+
+      entry.factor(10000);
+      entry.setCTime(MOOSTime());
+
+      if(entry.done())
+      {
+        m_cal_idx++;
+        entry.setCalculatedIndex(m_cal_idx);
+        string num_result = entry.getReport();
+
+        Notify("PRIME_RESULT", num_result);
+        it = m_num_val_msg.erase(it);
+      }
+      else
+      {
+        entry.m_started = true;
+        entry.m_part_way += 10000;
+        ++it;
+      }
     }
   }
-
-  Notify("PRIME_FACTOR", m_output_msg);
-
-  m_iterations++;
   
   AppCastingMOOSApp::PostReport();
   
@@ -139,6 +168,7 @@ void PrimeFactor::RegisterVariables()
 {
   AppCastingMOOSApp::RegisterVariables();
   // Register("FOOBAR", 0);
+  Register("PRIME_RESULT", 0);
   Register("NUM_VALUE", 0);
 }
 
@@ -147,7 +177,7 @@ void PrimeFactor::RegisterVariables()
 
 bool PrimeFactor::buildReport() 
 { 
-  m_msgs << "PRIME_FACTOR=" << m_output_msg << endl;
+  //m_msgs << "PRIME_FACTOR=" << m_output_msg << endl;
 
   return(true);
 }

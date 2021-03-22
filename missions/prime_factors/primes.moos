@@ -15,6 +15,7 @@ ProcessConfig = ANTLER
 
   Run = MOOSDB		@ NewConsole = false
   Run = pPrimeFactor    @ NewConsole = false
+  Run = pLogger     @ NewConsole = false
 }
 
 //------------------------------------------
@@ -24,4 +25,15 @@ ProcessConfig = pPrimeFactor
 {
   AppTick  = 4
   CommTick = 4
+}
+
+//------------------------------------------
+// pLogger config block
+ProcessConfig = pLogger
+{
+  AsyncLog = true
+  WildCardLogging = true
+  WildCardOmitPattern = *_STATUS
+  LOG =  PRIME_RESULT @ 0
+  LOG =  NUM_VALUE @ 0
 }
