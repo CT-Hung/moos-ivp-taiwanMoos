@@ -112,6 +112,6 @@ string PrimeEntry::getReport()
             num_result += ":";
         }
     }
-    num_result += ",username=ltencate";
+    num_result += ",username=DK";
     return num_result; 
 }
