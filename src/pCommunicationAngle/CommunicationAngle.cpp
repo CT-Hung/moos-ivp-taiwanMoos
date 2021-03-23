@@ -1,7 +1,7 @@
 /************************************************************/
-/*    NAME: Chao-Chun Hsu                                              */
+/*    NAME: Chao-Chun Hsu                                   */
 /*    ORGN: MIT, Cambridge MA                               */
-/*    FILE: CommunicationAngle.cpp                                        */
+/*    FILE: CommunicationAngle.cpp                          */
 /*    DATE: December 29th, 1963                             */
 /************************************************************/
 
