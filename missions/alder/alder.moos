@@ -24,7 +24,7 @@ ProcessConfig = ANTLER
   Run = pMarineViewer	@ NewConsole = false
   Run = uProcessWatch   @ NewConsole = false
   Run = pHelmIvP	@ NewConsole = false
-  Run = pOdometry	@ NewConsole = false
+  Run = pOdometry	@ NewConsole = true
 }
 
 //------------------------------------------
@@ -156,4 +156,13 @@ ProcessConfig = pNodeReporter
   AppTick	= 2
   CommsTick	= 2
   VESSEL_TYPE   = KAYAK
+}
+
+//------------------------------------------
+// pOdometry config block
+
+ProcessConfig = pOdometry
+{
+  AppTick	= 10
+  CommsTick	= 10
 }
