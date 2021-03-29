@@ -222,6 +222,15 @@ bool CommunicationAngle::buildReport()
   return(true);
 }
 
+//------------------------------------------------------------
+// Procedure: RegisterColl()
 
-
+void CommunicationAngle::RegisterColl()
+{
+  Register(m_cName+"_NAV_X", 0);
+  Register(m_cName+"_NAV_Y", 0);
+  Register(m_cName+"_NAV_DEPTH", 0);
+  Register(m_cName+"_NAV_HEADING", 0);
+  Register(m_cName+"_NAV_SPEED", 0);
+}
 
