@@ -1,16 +1,20 @@
 /************************************************************/
 /*    NAME: Ray Huang                                              */
-/*    ORGN: MIT, Cambridge MA                               */
+/*    ORGN: NYCU                              */
 /*    FILE: PrimeFactor.h                                          */
-/*    DATE: December 29th, 1963                             */
 /************************************************************/
 
 #ifndef PrimeFactor_HEADER
 #define PrimeFactor_HEADER
 
-#include "MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h"
+#include "MOOS/libMOOS/MOOSLib.h"
+#include <list>
+#include "PrimeEntry.h" 
 
-class PrimeFactor : public AppCastingMOOSApp
+
+using namespace std;
+
+class PrimeFactor : public CMOOSApp
 {
  public:
    PrimeFactor();
@@ -21,16 +25,16 @@ class PrimeFactor : public AppCastingMOOSApp
    bool Iterate();
    bool OnConnectToServer();
    bool OnStartUp();
-
- protected: // Standard AppCastingMOOSApp function to overload 
-   bool buildReport();
-
+   
  protected:
-   void registerVariables();
+   void RegisterVariables();
 
  private: // Configuration variables
-
+  
  private: // State variables
+   list<PrimeEntry> m_num_val_messages; //list entries
+   unsigned int m_recieved_index;
+   unsigned int m_calculated_index; 
 };
 
 #endif 
