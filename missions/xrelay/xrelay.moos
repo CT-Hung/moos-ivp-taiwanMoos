@@ -50,6 +50,5 @@ ProcessConfig = uXMS
  
    VAR = PEARS,  PEARS_ITER_HZ,  PEARS_POST_HZ
    VAR = APPLES, APPLES_ITER_HZ, APPLES_POST_HZ
-    history_var = DB_CLIENTS
 }
 
