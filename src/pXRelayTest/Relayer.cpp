@@ -23,7 +23,7 @@
 #include <iterator>
 #include "Relayer.h"
 #include "MBUtils.h"
-
+ 
 using namespace std;
 
 //---------------------------------------------------------
@@ -31,6 +31,7 @@ using namespace std;
 
 Relayer::Relayer()
 {
+  
   m_tally_recd = 0;
   m_tally_sent = 0;
   m_iterations = 0;
