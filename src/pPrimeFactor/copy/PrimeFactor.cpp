@@ -10,43 +10,41 @@
 #include "ACTable.h"
 #include "PrimeFactor.h"
 #include "PrimeEntry.h"
+
 using namespace std;
 
 //---------------------------------------------------------
 // Constructor
 
-//PrimeFactor::PrimeFactor(){}
+PrimeFactor::PrimeFactor()
+{
+    
+}
 
 //---------------------------------------------------------
 // Destructor
 
-//PrimeFactor::~PrimeFactor(){}
-
+PrimeFactor::~PrimeFactor()
+{
+}
 
 //---------------------------------------------------------
 // Procedure: OnNewMail
 
 bool PrimeFactor::OnNewMail(MOOSMSG_LIST &NewMail)
-{ 
+{
   AppCastingMOOSApp::OnNewMail(NewMail);
 
   MOOSMSG_LIST::iterator p;
   for(p=NewMail.begin(); p!=NewMail.end(); p++) {
-      CMOOSMsg &msg = *p;
-      string key    = msg.GetKey();
-      string sval   = msg.GetString();
+    CMOOSMsg &msg = *p;
+    string key    = msg.GetKey();
+    string sval = msg.GetString();
     
-  if (key=="NUM_VALUE"){
-      m_index++;
-      stringstream temp(sval);
-      m_ival = 0;
-      temp >> m_ival;
+    if(key=="NUM_VALUE"){                                                 value = stoull(sval);
+	m_prime.setReceivedIndex(1);
 
-      PrimeEntry m_prime;
-      m_prime.setOriginalVal(m_ival);
-      m_prime.setReceivedIndex(m_index);
-      m_mail_list.push_back(m_prime);
-
+	NUM_list.push_back(value);
     }
 
 #if 0 // Keep these around just for template
@@ -86,24 +84,40 @@ bool PrimeFactor::Iterate()
 {
   AppCastingMOOSApp::Iterate();
   // Do your thing here!
-   m_max_iter=200000; 
+  
 
-   for(list<PrimeEntry>::iterator k=m_mail_list.begin();k!=m_mail_list.end();k++){
+  list<string>::iterator i,q;
+  string m_result;
+  
+//if(NUM_list.size()!=0){
+     for(i=NUM_list.begin();i!=NUM_list.end();i++){
+         m_prime.setOriginalVal(*i);
+         m_prime.setStartTime(MOOSTime());
+         m_prime.factor(1000);
+     }
+/*     if(m_prime.done()){
+        m_prime.setCalculatedIndex(1);
+	m_prime.setEndTime(MOOSTime());
+	primes = m_prime.current_prime;
+        stringstream ss;
+        ss<<m_prime.getReport();
+        ss<<", solvetime="<<m_prime.getElapsedTime();
+        ss<<", primes=";
+        for(q=primes.begin();q!=primes.end();q++){
+                ss<<*q<<";";
+        }
+        ss<<", username=Eric Yang";
+        ss>>m_result;
+        cout<<m_result<<endl;
+        Notify("PRIME_RESULT",m_result);
+        NUM_list.pop_front();
+	ss.str("");
+	ss.clear();
+        primes.clear();
+}
+*/
+     }
 
-    PrimeEntry& m_prime_entry=*k;
-    m_prime_entry.factor(m_max_iter);
-
-    if (m_prime_entry.done()){
-      m_calc++;
-      m_prime_entry.setCalculatedIndex(m_calc);
-      m_result_str=m_prime_entry.getReport();
-      Notify("NUM_RESULT",m_result_str);
-      k=m_mail_list.erase(k);       
-    }
-    else{ 
-      break;
-    }
-   }
   AppCastingMOOSApp::PostReport();
   return(true);
 

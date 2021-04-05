@@ -16,8 +16,8 @@ using namespace std;
 class PrimeFactor : public AppCastingMOOSApp
 {
  public:
-  // PrimeFactor();
-  // ~PrimeFactor();
+   PrimeFactor();
+   ~PrimeFactor();
  
  protected: // Standard MOOSApp functions to overload  
    bool OnNewMail(MOOSMSG_LIST &NewMail);
@@ -32,12 +32,11 @@ class PrimeFactor : public AppCastingMOOSApp
    void registerVariables();
 
  private: // Configuration variables
-   uint64_t m_ival;
-   int m_index = 0;
-   int m_max_iter;
-   int m_calc = 0;
-   string m_result_str;
-   list <PrimeEntry> m_mail_list;
+   uint64_t value;
+   PrimeEntry m_prime;
+   list <uint64_t> NUM_list;
+   list <uint64_t> primes;
+ 
  private: // State variables
 };
 

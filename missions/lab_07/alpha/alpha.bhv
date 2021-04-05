@@ -12,26 +12,26 @@ Behavior = BHV_Waypoint
   condition = DEPLOY = true
   endflag   = RETURN = true
 
-//	configflag = CRUISE_SPD = $[SPEED]
+	configflag = CRUISE_SPD = $[SPEED]
 	//configflag = OSPOS = $[OSX],$[OSY]
 
-//	activeflag = INFO=$[OWNSHIP]
-//	activeflag = INFO=$[BHVNAME]
-//	activeflag = INFO=$[BHVTYPE]
+	activeflag = INFO=$[OWNSHIP]
+	activeflag = INFO=$[BHVNAME]
+	activeflag = INFO=$[BHVTYPE]
 
-//	cycleflag = CINFO=$[OSX],$[OSY]
+	cycleflag = CINFO=$[OSX],$[OSY]
 
-//	wptflag = PREV=$(PX),$(PY)
-//	wptflag = NEXT=$(NX),$(NY)
-//	wptflag = TEST=$(X),$(Y)
-//	wptflag = OSPOS=$(OSX),$(OSY)
-//	wptflag_on_start = true
+	wptflag = PREV=$(PX),$(PY)
+	wptflag = NEXT=$(NX),$(NY)
+	wptflag = TEST=$(X),$(Y)
+	wptflag = OSPOS=$(OSX),$(OSY)
+	wptflag_on_start = true
 
-//  updates    = WPT_UPDATE
+  updates    = WPT_UPDATE
   perpetual  = true
 
-//	    speed_alt = 1.2
-//  use_alt_speed = true
+	    speed_alt = 1.2
+  use_alt_speed = true
                 lead = 8
          lead_damper = 1
        lead_to_start = true
@@ -48,11 +48,11 @@ Behavior = BHV_Waypoint
              //repeat  = 100000
              repeat  = 3
 
-    //visual_hints = nextpt_color=yellow
-  //  visual_hints = nextpt_vertex_size=8
- //   visual_hints = nextpt_lcolor=gray70
-//    visual_hints = vertex_color=dodger_blue, edge_color=white
-//    visual_hints = vertex_size=5, edge_size=1
+    visual_hints = nextpt_color=yellow
+    visual_hints = nextpt_vertex_size=8
+    visual_hints = nextpt_lcolor=gray70
+    visual_hints = vertex_color=dodger_blue, edge_color=white
+    visual_hints = vertex_size=5, edge_size=1
 }
 
 //----------------------------------------------
@@ -85,8 +85,9 @@ Behavior=BHV_ConstantSpeed
   updates    = SPEED_UPDATE
   endflag    = SPD = false
 
-     speed = 2
+     speed = 0.5
 		 duration = 10
 		 duration_reset = CONST_SPD_RESET=true
 	
 }
+

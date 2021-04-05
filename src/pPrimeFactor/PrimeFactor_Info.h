@@ -1,8 +1,8 @@
 /****************************************************************/
-/*   NAME: yang                                             */
-/*   ORGN: MIT Cambridge MA                                     */
+/*   NAME: Eric Yang                                             */
+/*   ORGN: MIT, Cambridge MA                                    */
 /*   FILE: PrimeFactor_Info.h                                      */
-/*   DATE: Dec 29th 1963                                        */
+/*   DATE: Dececmber 29th, 1963                                 */
 /****************************************************************/
 
 #ifndef PrimeFactor_INFO_HEADER

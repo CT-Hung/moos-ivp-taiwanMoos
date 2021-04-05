@@ -1,8 +1,8 @@
 /****************************************************************/
-/*   NAME: yang                                             */
-/*   ORGN: MIT Cambridge MA                                     */
+/*   NAME: Eric Yang                                             */
+/*   ORGN: MIT, Cambridge MA                                    */
 /*   FILE: PrimeFactor_Info.cpp                               */
-/*   DATE: Dec 29th 1963                                        */
+/*   DATE: December 29th, 1963                                  */
 /****************************************************************/
 
 #include <cstdlib>
