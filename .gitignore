@@ -43,6 +43,7 @@
 *.urdf
 *.xacro
 MOOSLog*
+.LastOpenedMOOSLogDirectory
 catkin_ws/build/
 catkin_ws/install/
 catkin_ws/devel/
