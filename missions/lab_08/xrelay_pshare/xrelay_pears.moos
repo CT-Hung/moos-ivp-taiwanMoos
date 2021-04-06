@@ -9,7 +9,7 @@ ProcessConfig = ANTLER
   MSBetweenLaunches = 200
 
   Run = MOOSDB	 @ NewConsole = false
-  Run = pXRelay	 @ NewConsole = false ~ pXRelay_PEARS
+  //Run = pXRelay	 @ NewConsole = false ~ pXRelay_PEARS
   Run = pShare   @ NewConsole = false ~ pShare_PEARS
   Run = uXMS	 @ NewConsole = true
 }
@@ -34,7 +34,7 @@ ProcessConfig = pShare_PEARS
 
   input     = route = localhost:9201
 
-  output    = src_name=PEARS, route=localhost:9200
+  output    = src_name=PEARS, route=192.168.50.196:9200
 }
 
 //------------------------------------------
