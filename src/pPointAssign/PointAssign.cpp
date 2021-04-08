@@ -1,7 +1,7 @@
 /************************************************************/
-/*    NAME: Chao-Chun Hsu                                              */
+/*    NAME: Chao-Chun Hsu                                   */
 /*    ORGN: MIT, Cambridge MA                               */
-/*    FILE: PointAssign.cpp                                        */
+/*    FILE: PointAssign.cpp                                 */
 /*    DATE: December 29th, 1963                             */
 /************************************************************/
 
@@ -48,11 +48,16 @@ bool PointAssign::OnNewMail(MOOSMSG_LIST &NewMail)
     bool   mstr  = msg.IsString();
 #endif
 
-     if(key == "FOO") 
-       cout << "great!";
+    if(key == "VISIT_POINT"){
+      string str_val = msg.GetString();
 
-     else if(key != "APPCAST_REQ") // handled by AppCastingMOOSApp
-       reportRunWarning("Unhandled Mail: " + key);
+      m_travel_points.push_back(str_val);
+      m_Comms.Notify("VISIT_POINT_CHECK", str_val);
+    }
+    else if(key != "APPCAST_REQ"){
+      reportRunWarning("Unhandles Mail: " + key);
+    }
+
    }
 	
    return(true);
@@ -75,6 +80,78 @@ bool PointAssign::Iterate()
 {
   AppCastingMOOSApp::Iterate();
   // Do your thing here!
+  list<string>::iterator it;
+  for(it = m_travel_points.begin(); it != m_travel_points.end(); ++it){
+    Point m_point;
+    string str_val = *it;
+
+    m_Comms.Notify("STRING_VAL", str_val);
+
+    // message processing
+    vector<string> my_vector = parseString(str_val, ',');
+
+    for(unsigned int c = 0; c < my_vector.size(); c++){
+      string param = biteStringX(my_vector[c], '=');
+      string value = my_vector[c];
+
+      if(tolower(param) == "x"){
+        double x_double = atof(value.c_str());
+        m_point.setX(x_double);
+      }
+      else if(tolower(param) == "y"){
+        double y_double = atof(value.c_str());
+        m_point.setY(y_double);
+      }
+      else if(tolower(param) == "id"){
+        int id_int = atoi(value.c_str());
+        m_point.setID(id_int);
+      }
+    }
+    it = m_travel_points.erase(it);
+    m_points.push_back(m_point);
+  }
+
+  // assign by region is false
+  if(!assign_by_region){
+    m_Comms.Notify("ASSIGN_BY_REGION", "false");
+    m_Comms.Notify("VISIT_POINT_HENRY", "firstpoint");
+    m_Comms.Notify("VISIT_POINT_GILDA", "firstpoint");
+    
+    int count_henry = 0;
+    int count_gilda = 0;
+
+    for(vector<Point>::iterator it = m_points.begin(); it != m_points.end(); it++){
+      Point& point = *it;
+
+      cout << point.getInfo() << endl;
+
+      if((point.getID() % 2) == 0){
+        count_henry++;
+        string id = intToString(point.getID());
+        //string color = "green";
+        //postViewPoint(point.get_x(), point.get_y(), id, color);
+        m_Comms.Notify("VISIT_POINT_HENRY", point.getInfo());
+      }
+      else{
+        count_gilda++;
+        string id = intToString(point.getID());
+        //string color = "blue";
+        //postViewPoint(point.get_x(), point.get_y(), id, color);
+        m_Comms.Notify("VISIT_POINT_GILDA", point.getInfo());
+      }
+    }
+
+    m_Comms.Notify("VISIT_POINT_HENRY_COUNT", count_henry);
+    m_Comms.Notify("VISIT_POINT_GILDA_COUNT", count_gilda);
+    //m_Comms.Notify("VISIT_POINT_HENRY", "lastpoint");
+    //m_Comms.Notify("VISIT_POINT_GILDA", "lastpoint");
+  }
+  // assign by region is true
+  else{
+
+  }
+
+
   AppCastingMOOSApp::PostReport();
   return(true);
 }
@@ -122,7 +199,8 @@ bool PointAssign::OnStartUp()
 void PointAssign::registerVariables()
 {
   AppCastingMOOSApp::RegisterVariables();
-  // Register("FOOBAR", 0);
+
+  Register("VISIT_POINT", 0);
 }
 
 

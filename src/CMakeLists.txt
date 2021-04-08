@@ -21,6 +21,7 @@ ADD_SUBDIRECTORY(pXRelayTest)
 ADD_SUBDIRECTORY(pOdometry)
 ADD_SUBDIRECTORY(pPrimeFactor)
 ADD_SUBDIRECTORY(pCommunicationAngle)
+ADD_SUBDIRECTORY(pPointAssign)
 ##############################################################################
 #                           END of CMakeLists.txt
 ##############################################################################

@@ -1,7 +1,7 @@
 /************************************************************/
-/*    NAME: Chao-Chun Hsu                                              */
+/*    NAME: Chao-Chun Hsu                                   */
 /*    ORGN: MIT, Cambridge MA                               */
-/*    FILE: PointAssign.h                                          */
+/*    FILE: PointAssign.h                                   */
 /*    DATE: December 29th, 1963                             */
 /************************************************************/
 
@@ -9,6 +9,9 @@
 #define PointAssign_HEADER
 
 #include "MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h"
+#include "Point.h"
+
+using namespace std;
 
 class PointAssign : public AppCastingMOOSApp
 {
@@ -31,6 +34,9 @@ class PointAssign : public AppCastingMOOSApp
  private: // Configuration variables
 
  private: // State variables
+  list<string> m_travel_points;
+  vector<Point> m_points;
+  bool assign_by_region;
 };
 
 #endif 

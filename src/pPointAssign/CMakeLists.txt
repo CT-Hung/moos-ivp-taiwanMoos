@@ -4,6 +4,7 @@
 #--------------------------------------------------------
 
 SET(SRC
+  Point.cpp
   PointAssign.cpp
   PointAssign_Info.cpp
   main.cpp
