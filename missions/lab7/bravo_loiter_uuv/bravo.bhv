@@ -7,8 +7,8 @@ initialize   LOITER_REGION          = A
 initialize   WPT                    = false
 initialize   MOOS_MANUAL_OVERRIDE   = false
 
-//----------------------------------------------
 
+//----------------------------------------------
 set MODE = ACTIVE
 {
     DEPLOY = true
@@ -34,7 +34,6 @@ set MODE = WPT_SURVEY
 }
 
 //----------------------------------------------
-
 Behavior = BHV_Loiter
 {
   // General Behavior Parameters
@@ -60,7 +59,7 @@ Behavior = BHV_Loiter
               speed = 2.5                // default
       spiral_factor = -2               // default
 
-            polygon = format=radial, x=100, y=-75, radius=30, pts=8, snap=1
+            polygon = format=radial, x=100, y=-75, radius=30, pts=8, snap=1, label=Lima
         post_suffix = PAAL                             // example
 
 //      center_assign = 40,50            // example
@@ -78,6 +77,7 @@ Behavior = BHV_Loiter
        visual_hints = label        = zone1         // example
 }
 
+//----------------------------------------------
 Behavior = BHV_Loiter
 {
   // General Behavior Parameters
@@ -103,7 +103,7 @@ Behavior = BHV_Loiter
               speed = 2.5                // default
       spiral_factor = -2               // default
 
-            polygon = format=radial, x=160, y=-50, radius=20, pts=8, snap=1
+            polygon = format=radial, x=160, y=-50, radius=20, pts=8, snap=1, label=Oscar
         post_suffix = PAAL                             // example
 
 //      center_assign = 40,50            // example
@@ -121,6 +121,7 @@ Behavior = BHV_Loiter
        visual_hints = label        = zone2         // example
 }
 
+//----------------------------------------------
 Behavior = BHV_Waypoint
 {
   name      = waypt_survey
@@ -189,4 +190,44 @@ Behavior=BHV_ConstantSpeed
 		 duration = 10
 		 duration_reset = CONST_SPD_RESET=true
 	
+}
+
+//----------------------------------------------
+Behavior = BHV_ConstantDepth
+{
+  // General Behavior Parameters
+  // ---------------------------
+  name         = const_dep_survey_a   // example
+  pwt          = 100                // default
+  condition    = MODE==LOITER_A    // example
+  updates      = CONST_DEP_UPDATES  // example
+
+  // Parameters specific to this behavior
+  // ------------------------------------
+           basewidth = 100          // default
+               depth = 30           // default
+  depth_mismatch_var = DEPTH_DIFF   // example
+            duration = no-time-limit            // default
+           peakwidth = 3            // default
+         summitdelta = 50           // default
+}
+
+//----------------------------------------------
+Behavior = BHV_ConstantDepth
+{
+  // General Behavior Parameters
+  // ---------------------------
+  name         = const_dep_survey_b   // example
+  pwt          = 100                // default
+  condition    = MODE==LOITER_B    // example
+  updates      = CONST_DEP_UPDATES  // example
+
+  // Parameters specific to this behavior
+  // ------------------------------------
+           basewidth = 100          // default
+               depth = 10            // default
+  depth_mismatch_var = DEPTH_DIFF   // example
+            duration = no-time-limit            // default
+           peakwidth = 3            // default
+         summitdelta = 50           // default
 }
