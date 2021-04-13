@@ -8,6 +8,7 @@
 #include <iterator>
 #include "MBUtils.h"
 #include "ACTable.h"
+#include "XYPoint.h"
 #include "PointAssign.h"
 
 using namespace std;
@@ -17,6 +18,7 @@ using namespace std;
 
 PointAssign::PointAssign()
 {
+  assign_by_region = false;
 }
 
 //---------------------------------------------------------
@@ -79,7 +81,10 @@ bool PointAssign::OnConnectToServer()
 bool PointAssign::Iterate()
 {
   AppCastingMOOSApp::Iterate();
+ 
   // Do your thing here!
+  m_Comms.Notify("UTS_PAUSE", "false");
+  
   list<string>::iterator it;
   for(it = m_travel_points.begin(); it != m_travel_points.end(); ++it){
     Point m_point;
@@ -127,24 +132,28 @@ bool PointAssign::Iterate()
 
       if((point.getID() % 2) == 0){
         count_henry++;
+
         string id = intToString(point.getID());
-        //string color = "green";
-        //postViewPoint(point.get_x(), point.get_y(), id, color);
+        string color = "green";
+        postViewPoint(point.get_x(), point.get_y(), id, color);
+        
         m_Comms.Notify("VISIT_POINT_HENRY", point.getInfo());
       }
       else{
         count_gilda++;
+        
         string id = intToString(point.getID());
-        //string color = "blue";
-        //postViewPoint(point.get_x(), point.get_y(), id, color);
+        string color = "blue";
+        postViewPoint(point.get_x(), point.get_y(), id, color);
+        
         m_Comms.Notify("VISIT_POINT_GILDA", point.getInfo());
       }
     }
 
     m_Comms.Notify("VISIT_POINT_HENRY_COUNT", count_henry);
     m_Comms.Notify("VISIT_POINT_GILDA_COUNT", count_gilda);
-    //m_Comms.Notify("VISIT_POINT_HENRY", "lastpoint");
-    //m_Comms.Notify("VISIT_POINT_GILDA", "lastpoint");
+    m_Comms.Notify("VISIT_POINT_HENRY", "lastpoint");
+    m_Comms.Notify("VISIT_POINT_GILDA", "lastpoint");
   }
   // assign by region is true
   else{
@@ -175,9 +184,11 @@ bool PointAssign::OnStartUp()
     string line  = *p;
     string param = tolower(biteStringX(line, '='));
     string value = line;
+    bool bool_value;
 
     bool handled = false;
-    if(param == "foo") {
+    if(param == "assign_by_region") {
+      setBooleanOnString(bool_value, value);
       handled = true;
     }
     else if(param == "bar") {
@@ -222,6 +233,17 @@ bool PointAssign::buildReport()
   return(true);
 }
 
+//------------------------------------------------------------
+// Procedure: postViewPoint(double x, double y, string label, string color)
+void PointAssign::postViewPoint(double x, double y, string label, string color)
+{
+  XYPoint point(x, y);
+  point.set_label(label);
+  point.set_color("vertex", color);
+  point.set_param("vertex_size", "2");
 
+  string spec = point.get_spec();
+  m_Comms.Notify("VIEW_POINT", spec);
+}
 
 

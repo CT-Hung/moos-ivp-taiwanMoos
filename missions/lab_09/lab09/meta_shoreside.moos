@@ -51,6 +51,7 @@ ProcessConfig = uFldShoreBroker
 	
   qbridge  = DEPLOY, RETURN, STATION_KEEP, NODE_REPORT, NODE_MESSAGE
   qbridge  = MOOS_MANUAL_OVERRIDE
+  qbridge  = VISIT_POINT
 
   bridge   = src=UP_LOITER_$N, alias=UP_LOITER
   bridge   = src=HELM_MAP_CLEAR, alias=HELM_MAP_CLEAR
@@ -144,6 +145,12 @@ ProcessConfig = uTimerScript
 {
   AppTick     = 4
   CommsTick   = 4
+
+  paused      = true
+  pause_var   = UTS_PAUSE
+
+  condition = (UTS_PAUSE="false")
+  //condition = ((UTS_PAUSE=false) and (PMV_CONNECT = 0))
   
   rand_var    = varname=RND_VAL_X, min=-25, max=200,  key=at_post, snap=1
   rand_var    = varname=RND_VAL_Y, min=-175, max=-25, key=at_post, snap=1

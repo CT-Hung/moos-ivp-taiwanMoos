@@ -30,6 +30,7 @@ class PointAssign : public AppCastingMOOSApp
 
  protected:
    void registerVariables();
+   void postViewPoint(double x, double y, string label, string color);
 
  private: // Configuration variables
 
