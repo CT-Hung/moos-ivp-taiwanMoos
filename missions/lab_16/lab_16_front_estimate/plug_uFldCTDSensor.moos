@@ -1,0 +1,27 @@
+//--------------------------------------------------
+// uFldGenericSensor configuration block from plugin
+
+ProcessConfig = uFldCTDSensor
+{
+  AppTick   = 3
+  CommsTick = 3
+
+   // Configuring Artificial Noise                               
+  xmin  = 0       
+  xmax  = 500       
+  ymin  = -400       
+  ymax  =  0  
+  
+  
+  offset = -90;             // y_0
+  angle  = 5;               // front angle theta
+  amplitude = 20;           // spatial amplitude a
+  period = 196;             // temporal period T
+  wavelength = 100;         // spatial wavelength lambda
+  alpha = 500;              // spatial 1/e length scale alpha
+  beta = 20;                // length scale of frontal gradient beta
+  temperature_north = 20;   // temperature North of front
+  temperature_south = 25;   // temperature South of front
+  sigma = 0.01;             // standard deviation of Gaussian sensor noise
+}
+
