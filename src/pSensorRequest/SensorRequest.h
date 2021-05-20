@@ -11,7 +11,6 @@
 #include "MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h"
 #include "MOOS/libMOOS/MOOSLib.h"
 
-
 class SensorRequest : public AppCastingMOOSApp
 {
  public:
@@ -29,6 +28,7 @@ class SensorRequest : public AppCastingMOOSApp
 
  protected:
    void registerVariables();
+   std::string m_name;
    double m_nav_x;
    double m_nav_y;
    double m_is_trigger;

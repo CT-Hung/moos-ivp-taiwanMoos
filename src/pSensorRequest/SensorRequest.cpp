@@ -6,10 +6,10 @@
 /************************************************************/
 
 #include <iterator>
+#include <string>
 #include "MBUtils.h"
 #include "ACTable.h"
 #include "SensorRequest.h"
-#include <string>
 
 using namespace std;
 
@@ -18,6 +18,7 @@ using namespace std;
 
 SensorRequest::SensorRequest()
 {
+   m_name = "";
    m_nav_x = 0;
    m_nav_y = 0;
    m_is_trigger = 0;
@@ -55,6 +56,9 @@ bool SensorRequest::OnNewMail(MOOSMSG_LIST &NewMail)
     if(key == "START_TEMP_MEASURE"){
       m_is_trigger = msg.GetDouble();
     }
+    if(key == "V_NAME"){
+      m_name = msg.GetString();
+    }
     if(key == "NAV_X"){
       m_nav_x = msg.GetDouble();
     }
@@ -91,7 +95,7 @@ bool SensorRequest::Iterate()
   // Do your thing here!
   if(m_is_trigger == 1){
     string m_string;
-    m_string += "vname=alpha";
+    m_string += "vname=" + m_name;
     m_string += ",x=" + to_string(m_nav_x);
     m_string += ",y=" + to_string(m_nav_y);
     Notify( "UCTD_SENSOR_REQUEST", m_string);
@@ -146,6 +150,7 @@ void SensorRequest::registerVariables()
   AppCastingMOOSApp::RegisterVariables();
   // Register("FOOBAR", 0);
   Register("START_TEMP_MEASURE", 0);
+  Register("V_NAME", 0);
   Register("NAV_X", 0);
   Register("NAV_Y", 0);
 }
@@ -161,9 +166,9 @@ bool SensorRequest::buildReport()
   m_msgs << "============================================" << endl;
 
   ACTable actab(4);
-  actab << "Alpha | Bravo | Charlie | Delta";
+  actab << "Alpha | Bravo | Charlie | Delta | Echo | Foxtrot | Golf";
   actab.addHeaderLines();
-  actab << "one" << "two" << "three" << "four";
+  actab << "one" << "two" << "three" << "four" << "five" << "six" << "seven";
   m_msgs << actab.getFormattedString();
 
   return(true);
