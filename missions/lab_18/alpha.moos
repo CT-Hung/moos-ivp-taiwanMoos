@@ -280,7 +280,7 @@ ProcessConfig = pSensorRequest
 }
 
 //--------------------------------------------------
-// uFldGenericSensor configuration block from plugin
+// uFldCTDSensor configuration block from plugin
 
 ProcessConfig = uFldCTDSensor
 {

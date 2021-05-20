@@ -1,0 +1,75 @@
+//-------------------------------------------------
+// NAME: M. Benjamin, MIT CSAIL
+// FILE: golf_veh.moos
+//-------------------------------------------------
+
+ServerHost   = localhost
+ServerPort   = 9007
+Community    = golf
+MOOSTimeWarp = 1
+
+// Bamboo
+LatOrigin  = 24.78797733
+LongOrigin = 121.00186927
+
+//------------------------------------------
+// Antler configuration  block
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB              @ NewConsole = false
+  Run = pShare              @ NewConsole = false
+  Run = pNodeReporter	      @ NewConsole = false
+  Run = pGradeFrontEstimate @ NewConsole = false
+  Run = pSensorRequest      @ NewConsole = false
+}
+
+//#include plug_uFldCTDSensor.moos
+#include plug_uFldCTDSensor_1.moos
+
+//---------------------------------------------------------
+// pShare Config Block
+
+ProcessConfig = pShare
+{
+  AppTick    = 2
+  CommsTick  = 2
+
+  //input = route =  localhost:9300
+
+  output = src_name = NODE_REPORT_LOCAL, dest_name=NODE_REPORT_LOCAL, route=192.168.50.100:9307
+  output = src_name = UCTD_SENSOR_REQUEST, dest_name=UCTD_SENSOR_REQUEST, route=192.168.50.100:9307
+}
+
+//------------------------------------------
+// pNodeReporter config block
+
+ProcessConfig = pNodeReporter
+{
+  AppTick    = 2
+  CommsTick	 = 2
+
+  platform_type   = kayak
+  platform_color  = white
+  platform_length = 4
+}
+
+//------------------------------------------
+// pSensorRequest config block
+
+ProcessConfig = pSensorRequest
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+
+//--------------------------------------------------
+// pGradeFrontEstiamte Configuration Block
+
+ProcessConfig = pGradeFrontEstimate
+{
+  AppTick=1
+  CommsTick = 1
+
+}
