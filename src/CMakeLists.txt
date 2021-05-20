@@ -22,6 +22,7 @@ ADD_SUBDIRECTORY(pOdometry)
 ADD_SUBDIRECTORY(pPrimeFactor)
 ADD_SUBDIRECTORY(pCommunicationAngle)
 ADD_SUBDIRECTORY(pPointAssign)
+ADD_SUBDIRECTORY(pSensorRequest)
 ##############################################################################
 #                           END of CMakeLists.txt
 ##############################################################################

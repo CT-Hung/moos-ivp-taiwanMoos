@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pSensorRequest config block
+
+ProcessConfig = pSensorRequest
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+
