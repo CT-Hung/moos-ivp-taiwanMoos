@@ -2,7 +2,7 @@ ServerHost = localhost
 ServerPort = 9002
 Community  = betty
 
-MOOSTimeWarp = 10
+MOOSTimeWarp = 1
 //LatOrigin  = 43.825300 
 //LongOrigin = -70.330400 
 //LatOrigin  = 42.3584

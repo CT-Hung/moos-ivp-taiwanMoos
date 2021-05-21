@@ -1,0 +1,25 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LOG FILE:       ./LOG_BETTY_21_5_2021_____11_40_56/LOG_BETTY_21_5_2021_____11_40_56.ylog
+%% FILE OPENED ON  Thu Jan  1 08:00:00 1970
+%% LOGSTART               1621568456.17
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+0.8679471  MOOS_DEBUG           pMarinePID           ** NEW CONTROLLER GAINS ARE ** 
+0.8679612  MOOS_DEBUG           pMarinePID           YAW_PID_KP             = 0.400 
+0.867964   MOOS_DEBUG           pMarinePID           YAW_PID_KD             = 0.100 
+0.8679671  MOOS_DEBUG           pMarinePID           YAW_PID_KI             = 0.000 
+0.867969   MOOS_DEBUG           pMarinePID           YAW_PID_INTEGRAL_LIMIT = 0.070 
+0.8679891  MOOS_DEBUG           pMarinePID           MAXRUDDER              = 100.000 
+0.8689351  MOOS_DEBUG           pMarinePID           SPEED_PID_KP           = 1.000 
+0.868942   MOOS_DEBUG           pMarinePID           SPEED_PID_KD           = 0.000 
+0.8689442  MOOS_DEBUG           pMarinePID           SPEED_PID_KI           = 0.000 
+0.8689461  MOOS_DEBUG           pMarinePID           SPEED_PID_INTEGRAL_LIMIT = 0.070 
+0.8689492  MOOS_DEBUG           pMarinePID           MAXTHRUST              = 100.000 
+0.8689492  MOOS_DEBUG           pMarinePID           MAXTHRUST              = 100.000 
+0.969413   MOOS_DEBUG           pMarinePID           Paused Due To Tardy HELM Input: THRUST=0 
+1.474502   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: ManualOverride 
+1.474502   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: ManualOverride 
+1.474502   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: ManualOverride 
+3.527854   MOOS_DEBUG           pMarinePID           pMarinePID Control Is On 
+3.527927   MOOS_DEBUG           pMarinePID           Paused Due To Tardy HELM Input: THRUST=0 
+3.990462   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: clear 
+3.990462   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: clear 

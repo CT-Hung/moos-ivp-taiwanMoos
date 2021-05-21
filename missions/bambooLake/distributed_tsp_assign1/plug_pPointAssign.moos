@@ -1,0 +1,10 @@
+ProcessConfig = pPointAssign
+{
+   AppTick   = 4
+   CommsTick = 4
+ASSIGN_BY_REGION = TRUE    
+VNAME1 = HENRY
+VNAME2 = GILDA
+}
+
+

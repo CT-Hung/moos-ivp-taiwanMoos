@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LOG FILE:       ./LOG_%(VNAME)_21_5_2021_____11_40_57/LOG_%(VNAME)_21_5_2021_____11_40_57._moos
+%% FILE OPENED ON  Thu Jan  1 08:00:00 1970
+%% LOGSTART               1621568456.78
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//*******************************************************
+// ShoreSide Configuration File
+
+ServerHost = localhost
+ServerPort = 9000
+Community  = shoreside
+
+MOOSTimeWarp = 1
+//LatOrigin  = 43.825300 
+//LongOrigin = -70.330400 
+//LatOrigin  = 42.3584
+//LongOrigin = -71.08745
+
+LatOrigin  = 24.78797733
+LongOrigin = 121.00186927
+
+  
+//--------------------------------------------------------
+Processconfig = ANTLER
+{
+  MSBetweenLaunches = 400
+
+  Run = MOOSDB              @ NewConsole = false
+  Run = pMarineViewer       @ NewConsole = false
+  Run = pLogger             @ NewConsole = false
+
+  Run = pShare              @ NewConsole = false
+  Run = pHostInfo           @ NewConsole = false
+  Run = uFldShoreBroker     @ NewConsole = false
+  Run = uFldNodeComms       @ NewConsole = false
+  Run = uTimerScript        @ NewConsole = false
+}
+
+
+//--------------------------------------------------
+// pHostInfo configuration block from plugin
+
+ProcessConfig = pHostInfo
+{
+  AppTick 	= 1
+  CommsTick	= 1
+
+  default_hostip_force = localhost
+}
+
+
+//--------------------------------------------------
+// pLogger Configuration Block (Created from Plugin)
+
+ProcessConfig = pLogger
+{
+  AppTick 	= 5
+  CommsTick 	= 5
+  
+  File		= LOG_%(VNAME)
+  PATH		= ./
+  SyncLog 	= true @ 0.2
+  AsyncLog 	= true
+  FileTimeStamp = true
+
+  Log = IVPHELM_LIFE_EVENT @ 0 nosync
+
+  // Log it all!!!!!
+  WildCardLogging = true 
+  WildCardOmitPattern = *_STATUS
+  LogAuxSrc = true
+}
+
+//---------------------------------------------------------
+// pShare Config Block  (Created from Plugin)
+
+ProcessConfig = pShare
+{
+  AppTick    = 2
+  CommsTick  = 2
+
+  input = route =  localhost:9200
+}
+
+
+
+ //------------------------------------------
+ ProcessConfig = uTimerScript                                    
+ {                                                               
+AppTick = 4 
+CommsTick = 4
+    delay_start = 10
+   rand_var    = varname=RND_X, min=-10, max=60, key=at_post
+   rand_var    = varname=RND_Y, min=-70, max=-10, key=at_post
+
+//    event = var=OBS_MSG, val="poly=pts={x=$[RND_X],y=$[RND_Y]},label=$[TCOUNT]", time=1, amt=100 
+//    event = var=VIEW_POINT, val="x=$[RND_X],y=$[RND_Y],label=$[TCOUNT],vertex_size=3", time=1, amt=100
+ }   
+//--------------------------------------------------
+// uFldShoreBroker Configuration Block
+
+ProcessConfig = uFldShoreBroker
+{
+  AppTick       = 1
+  CommsTick     = 1
+
+  // Note: [qbridge = FOO]  is shorthand for                    
+  //       [bridge = src=FOO_$V,  alias=FOO] and                
+  //       [bridge = src=FOO_ALL, alias=FOO]
+
+  qbridge  = DEPLOY, RETURN, NODE_REPORT, NODE_MESSAGE, STATION_KEEP
+  qbridge  = MOOS_MANUAL_OVERRIDE, OBS_MSG
+
+  bridge = src=RETURN_ALL, alias=RETURN
+  bridge = src=RETURN_$V, alias=RETURN
+  bridge = src=UP_LOITER_$N,alias=UP_LOITER
+  bridge = src=UCTD_MSMNT_REPORT_$V,alias=UCTD_MSMNT_REPORT
+  bridge = src=APPCAST_REQ 
+}
+
+//--------------------------------------------------
+// uFldNodeComms Configuration Block
+
+ProcessConfig = uFldNodeComms
+{
+	AppTick   = 2
+	CommsTick = 2
+
+	comms_range      = 100
+	critical_range   = 25
+	min_msg_interval = 0
+	max_msg_length   = 48000
+	groups           = true
+	view_node_rpt_pulses = true
+}
+
+//--------------------------------------------------------
+ProcessConfig = pMarineViewer
+{
+  AppTick    = 4
+  CommsTick  = 4
+
+  tiff_file            = bamboo_17_map.tif
+  tiff_file_b          = bamboo_17_sat.tif
+  set_pan_x            = -85
+  set_pan_y            = -40
+  zoom                 = 6
+
+  vehicles_shape_scale = 1.5
+  vehicles_name_mode   = names+shortmode
+  marker_viewable_labels = false
+
+	polygon_viewable_labels = false
+	
+  appcast_width = 30
+
+  appcast_viewable     = true
+  appcast_color_scheme = indigo
+	appcast_font_size    = large
+	procs_font_size      = large
+	nodes_font_size      = xlarge
+
+  SCOPE = UCTD_PARAMETER_ESTIMATE
+  //ACTION = STATION_ALL = true
+
+	action = FGR_SHOW = truth
+  action = FGR_SHOW = guess
+  action = FGR_SHOW = both
+
+  button_one   = DEPLOY_ALL  # DEPLOY_ALL=true 
+  button_one   = MOOS_MANUAL_OVERRIDE_ALL=false # STATION_KEEP_ALL=false 
+  button_one   = RETURN_ALL=false
+  button_one   = FRONT_SURVEY=true
+  button_two   = RETURN_ALL  # RETURN_ALL=true 
+
+  button_three = ALLSTOP  # DEPLOY_ALL=false # MOOS_MANUAL_OVERRIDE_ALL=true
+//  button_four  = SHOW:both   # FGR_SHOW=both
+  button_four = STATION # STATION_KEEP_ALL=true
+}
+
+
