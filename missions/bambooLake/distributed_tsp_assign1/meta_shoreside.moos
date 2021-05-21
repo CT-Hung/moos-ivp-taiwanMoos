@@ -4,10 +4,10 @@
 ServerHost = localhost
 ServerPort = $(VPORT)
 Community  = $(VNAME)
-//LatOrigin   = 24.791721545708782
-//LongOrigin  = 120.99517822265625
-LatOrigin  = 24.787965
-LongOrigin = 121.001880
+LatOrigin   = 24.791721545708782
+LongOrigin  = 120.99517822265625
+//LatOrigin  = 24.787965
+//LongOrigin = 121.001880
 #include plug_origin_warp.moos
   
 //--------------------------------------------------------
