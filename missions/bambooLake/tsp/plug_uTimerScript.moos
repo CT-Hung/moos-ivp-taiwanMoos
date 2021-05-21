@@ -6,6 +6,6 @@ ProcessConfig = uTimerScript
     rand_var    = varname=RND_VAL_X, min=-10, max=50, key=at_post
     rand_var    = varname=RND_VAL_Y, min=-45,max=-10, key=at_post
     event = var=VISIT_POINT, val="first_point", time=0
-    event = var=VISIT_POINT, val="x=$[RND_VAL_X], y=$[RND_VAL_Y], id=$[TCOUNT]", time=0, amt=40
+    event = var=VISIT_POINT, val="x=$[RND_VAL_X], y=$[RND_VAL_Y], id=$[TCOUNT]", time=0, amt=32
     event = var=VISIT_POINT, val="lastpoint", time=0
 }

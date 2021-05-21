@@ -51,8 +51,8 @@ Behavior = BHV_Waypoint
 //              points = pts = {675,-420:680,-430:685,-440}
          post_suffix = HENRY                   // example
               repeat = 2                       // default
-         slip_radius = 15                      // default
-               speed = 1.2                     // default is zero
+         slip_radius = 20                      // default
+               speed = 0.3                     // default is zero
         perpetual    = true 
                 lead = 8
 }

@@ -63,8 +63,8 @@ ProcessConfig = pMarineViewer
 //  set_pan_y            = -280
 //  zoom                 = 0.65
 
-  tiff_file            = bamboo_17_map.tif 
-  tiff_file_b          = bamboo_17_sat.tif 
+  tiff_file            = bamboo_17_sat.tif 
+  tiff_file_b          = bamboo_17_map.tif 
   set_pan_x            = -85
   set_pan_y            = -40 
   zoom                 = 6.00
