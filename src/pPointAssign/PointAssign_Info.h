@@ -1,8 +1,8 @@
 /****************************************************************/
 /*   NAME: tychien                                             */
-/*   ORGN: MIT, Cambridge MA                                    */
+/*   ORGN: MIT Cambridge MA                                     */
 /*   FILE: PointAssign_Info.h                                      */
-/*   DATE: Dececmber 29th, 1963                                 */
+/*   DATE: Dec 29th 1963                                        */
 /****************************************************************/
 
 #ifndef PointAssign_INFO_HEADER

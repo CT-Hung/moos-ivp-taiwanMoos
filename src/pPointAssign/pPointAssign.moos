@@ -1,3 +1,24 @@
+ServerHost  = localhost
+ServerPort  = 9000
+Community   = pointassign 
+
+LatOrigin   = 43.825300
+LongOrigin  = -70.330400
+//----------------------------------------------
+//ProcessConfig block 
+
+ProcessConfig = ANTLER 
+{
+    MSBetweenLaunches = 200
+    Run = MOOSDB            @ NewConsole = false
+    Run = pLogger           @ NewConsole = false
+    Run = pMarineViewer     @ NewConsole = false
+    Run = uXMS              @ NewConsole = false
+    Run = pPointAssign      @ NewConsole = false
+    Run = uTimerScript      @ NewConsole = false
+}
+
+
 //------------------------------------------------
 // pPointAssign config block
 
@@ -5,5 +26,74 @@ ProcessConfig = pPointAssign
 {
    AppTick   = 4
    CommsTick = 4
+    
+ASSIGN_BY_REGION = TRUE
+VNAME1 = HENRY
+VNAME2 = GILDA
 }
 
+//------------------------------------------------
+// uTimerScript config block 
+
+ProcessConfig = uTimerScript
+{
+ 
+    rand_var    = varname=RAND_VAL_X, min=-25 , max=200,key=at_post
+     rand_var    = varname=RAND_VAL_Y, min=-175, max=-25,key=at_post
+     paused    = true
+     condition   = UTIMERSTART = true
+     event = var = VISIT_POINT, val="first_point", time=0
+     event = var = VISIT_POINT, val="x=$[RAND_VAL_X], y=$[RAND_VAL_Y], id=$[TCOUNT]", time =0,amt=100
+     event = var = VISIT_POINT, val="lastpoint", time=0
+}
+
+//--------------------------------------------------
+// uXMS config block 
+
+ProcessConfig = uXMS 
+{
+    AppTick     = 4 
+    CommsTick   = 4 
+
+    var = VISIT_ASSIGN_HENRY, VISIT_ASSIGN_GILDA, VISIT_POINT, VISIT_ASSIGN
+
+}
+
+//--------------------------------------------------
+// pMarineViewer config block 
+
+ProcessConfig = pMarineViewer
+{
+  AppTick    = 4
+  CommsTick  = 4
+
+  TIFF_FILE            = forrest19.tif
+  set_pan_x            = -90
+  set_pan_y            = -280
+  zoom                 = 0.65
+  vehicles_shape_scale = 1.5
+  vehicles_name_mode   = names+shortmode
+
+  point_viewable_labels   = true
+  polygon_viewable_labels = false
+  appcast_viewable     = true
+  appcast_color_scheme = indigo
+  hash_delta           = 50
+  hash_viewable        = true
+  hash_shade           = 0.35
+
+  SCOPE = VIEW_POINT
+
+  BUTTON_ONE   = DEPLOY  # DEPLOY_ALL=true
+  BUTTON_ONE   = MOOS_MANUAL_OVERRIDE_ALL=false
+  BUTTON_ONE   = RETURN_ALL=false # STATION_KEEP_ALL=false
+
+  BUTTON_TWO   = RETURN  # RETURN_ALL=true
+  BUTTON_TWO   = STATION_KEEP_ALL=false
+
+  BUTTON_THREE = STATION  # STATION_KEEP_ALL=true
+
+  BUTTON_FOUR  = REFUEL_NEEDED # REFUEL_NEEDED_ALL = true
+  BUTTON_FOUR  = STATION_KEEP_ALL = false
+  BUTTON_FOUR  = LOITER_ALL = false
+}

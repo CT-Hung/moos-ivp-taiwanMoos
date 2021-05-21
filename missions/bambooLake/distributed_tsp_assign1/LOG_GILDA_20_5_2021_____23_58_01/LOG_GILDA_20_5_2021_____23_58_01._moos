@@ -1,13 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% LOG FILE:       ./LOG_HENRY_21_5_2021_____11_03_46/LOG_HENRY_21_5_2021_____11_03_46._moos
-%% FILE OPENED ON  Thu Jan  1 08:00:00 1970
-%% LOGSTART               1621566225.46
+%% LOG FILE:       ./LOG_GILDA_20_5_2021_____23_58_01/LOG_GILDA_20_5_2021_____23_58_01._moos
+%% FILE OPENED ON  Wed Dec 31 19:00:00 1969
+%% LOGSTART               1621569481.03
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ServerHost = localhost
-ServerPort = 9002
+ServerPort = 9001
 
 // Community name IS the vehicle name
-Community  = henry
+Community  = gilda
 
 MOOSTimeWarp = 1
 LatOrigin  = 43.825300 
@@ -41,7 +41,7 @@ ProcessConfig = uSimMarine
   AppTick   = 10
   CommsTick = 10
 
-  START_POS = 80,0, 180, 0
+  START_POS = 0,0, 180, 0
   PREFIX    = NAV
 }
 
@@ -54,7 +54,7 @@ ProcessConfig = pLogger
   AppTick 	= 10
   CommsTick 	= 10
   
-  File		= LOG_HENRY
+  File		= LOG_GILDA
   PATH		= ./
   AsyncLog 	= true
   FileTimeStamp = true
@@ -122,7 +122,7 @@ ProcessConfig = pHelmIvP
 
   ok_skew      = any
   
-  Behaviors    = targ_henry.bhv  
+  Behaviors    = targ_gilda.bhv  
   Verbose      = false
   Domain       = course:0:359:360
   Domain       = speed:0:5:26
@@ -156,7 +156,7 @@ ProcessConfig = pShare
   AppTick    = 2
   CommsTick  = 2
 
-  input = route =  localhost:9302
+  input = route =  localhost:9301
 }
 
 

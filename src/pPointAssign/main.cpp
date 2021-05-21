@@ -1,7 +1,7 @@
 /************************************************************/
 /*    NAME: tychien                                              */
-/*    ORGN: MIT, Cambridge MA                               */
-/*    FILE: main.cpp, Cambridge MA                          */
+/*    ORGN: MIT                                             */
+/*    FILE: main.cpp                                        */
 /*    DATE: December 29th, 1963                             */
 /************************************************************/
 
