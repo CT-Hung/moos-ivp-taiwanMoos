@@ -47,7 +47,7 @@ Behavior = BHV_Waypoint
     endflag     = RETURN = true
    // Parameters specific to this behavior
    // ------------------------------------
-              points = $(START_POS)  // example
+              points = 690,-415  // example
 //              points = pts = {675,-420:680,-430:685,-440}
          post_suffix = HENRY                   // example
               repeat = 2                       // default
@@ -70,7 +70,7 @@ Behavior = BHV_Waypoint
       speed = 1.3
      radius = 3.0
   nm_radius = 15.0
-     points = $(START_POS)
+     points = 690,-415
        lead = 8
 }
 
@@ -105,7 +105,7 @@ Behavior = BHV_Waypoint
       speed = 1.3
      radius = 4.0
   nm_radius = 15.0
-     points = $(START_POS)
+     points = 690,-415
        lead = 8
 }
 
@@ -137,3 +137,4 @@ Behavior = BHV_Timer
     endflag     = LOITER = false 
     perpetual   = true 
 }
+

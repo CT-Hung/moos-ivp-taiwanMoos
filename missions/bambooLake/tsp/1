@@ -4,16 +4,13 @@
 ServerHost = localhost
 ServerPort = $(VPORT)
 Community  = $(VNAME)
-LatOrigin   = 24.791721545708782
-LongOrigin  = 120.99517822265625
-//LatOrigin  = 24.787965
-//LongOrigin = 121.001880
+
 #include plug_origin_warp.moos
   
 //--------------------------------------------------------
 Processconfig = ANTLER
 {
-  MSBetweenLaunches = 50
+  MSBetweenLaunches = 100
 
   Run = MOOSDB          @ NewConsole = false
   Run = pMarineViewer   @ NewConsole = false
@@ -22,16 +19,12 @@ Processconfig = ANTLER
   Run = pHostInfo       @ NewConsole = false
   Run = uFldShoreBroker @ NewConsole = false
   Run = uTimerScript    @ NewConsole = false
-  Run = pPointAssign    @ NewConsole = false
-  Run = uXMS            @ NewConsole = false
 }
 
 #include plug_pShare.moos
 #include plug_pHostInfo.moos
 #include plug_pLogger.moos
 #include plug_uTimerScript.moos 
-#include plug_pPointAssign.moos 
-#include plug_pGenPath.moos 
 //--------------------------------------------------
 // uFldShoreBroker Configuration Block
 
@@ -47,7 +40,6 @@ ProcessConfig = uFldShoreBroker
   QBRIDGE  = LOITER  
   BRIDGE   = src=RETURN_ALL, alias=RETURN
   BRIDGE   = src=RETURN_$V,  alias=RETURN 
-  BRIDGE   = src=VISIT_ASSIGN_$V, alias=VISIT_ASSIGN 
   //BRIDGE   = src=REFUEL_NEEDED_ALL, alias=REFUEL
   //BRIDGE   = src=REFUEL_NEEDED_$V, alias=REFUEL
 }
@@ -58,20 +50,12 @@ ProcessConfig = pMarineViewer
   AppTick    = 4
   CommsTick  = 4
 
-//  TIFF_FILE            = forrest19.tif
-//  set_pan_x            = -90
-//  set_pan_y            = -280
-//  zoom                 = 0.65
-
-  tiff_file            = bamboo_17_map.tif 
-  tiff_file_b          = bamboo_17_sat.tif 
-  set_pan_x            = -85
-  set_pan_y            = -40 
-  zoom                 = 6.00
-
+  TIFF_FILE            = forrest19.tif
+  set_pan_x            = -90
+  set_pan_y            = -280
+  zoom                 = 0.65
   vehicles_shape_scale = 1.5
   vehicles_name_mode   = names+shortmode
-//    marker_viewable_labels = false
 
   point_viewable_labels   = false
   polygon_viewable_labels = false
@@ -81,8 +65,8 @@ ProcessConfig = pMarineViewer
   hash_viewable        = true
   hash_shade           = 0.35
 
-  SCOPE = PHI_HOST_INFO, UPDATES_VAR
-  SCOPE = UPDATE_WPT
+  SCOPE = PHI_HOST_INFO
+
   BUTTON_ONE   = DEPLOY  # DEPLOY_ALL=true 
   BUTTON_ONE   = MOOS_MANUAL_OVERRIDE_ALL=false 
   BUTTON_ONE   = RETURN_ALL=false # STATION_KEEP_ALL=false
@@ -97,10 +81,3 @@ ProcessConfig = pMarineViewer
   BUTTON_FOUR  = LOITER_ALL = false 
 }
 
-ProcessConfig = uXMS 
-{
-    AppTick     = 4
-    CommsTick   = 4
-    var = UTIMESTART, UTS_PAUSE, VISIT_ASSIGN, VISIT_ASSIGN_HENRY, VISIT_ASSIGN_GILDA
-
-}

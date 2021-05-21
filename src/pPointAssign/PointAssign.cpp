@@ -131,7 +131,7 @@ bool PointAssign::Iterate()
                 output_index_f ++;
             } 
             
-            if(x>690){
+            if(x>20){
                 Notify(visit_point_vname1,get_visit_point);
                 output_index_1 ++; 
                 cout <<  "get_visit_point = " << get_visit_point<< endl;
@@ -140,7 +140,7 @@ bool PointAssign::Iterate()
                 visit_point_list.pop_front();
                 index_1 += get_visit_point;
             }
-            if((x<690) && (x>665) && (visit_point_list.front() !="first_point") && (visit_point_list.front() !="lastpoint")){
+            if((x<20) && (x>-10) && (visit_point_list.front() !="first_point") && (visit_point_list.front() !="lastpoint")){
                 if(visit_point_list.front()!="first_point"){
                 Notify(visit_point_vname2,get_visit_point);
                 visit_point_list.pop_front();
