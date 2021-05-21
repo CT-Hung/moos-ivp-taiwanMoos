@@ -1,14 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LOG FILE:       ./LOG_SHORESIDE_21_5_2021_____06_43_02/LOG_SHORESIDE_21_5_2021_____06_43_02._moos
+%% FILE OPENED ON  Wed Dec 31 19:00:00 1969
+%% LOGSTART               1621593781.67
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //*******************************************************
 // ShoreSide Configuration File
 
 ServerHost = localhost
-ServerPort = $(VPORT)
-Community  = $(VNAME)
+ServerPort = 9000
+Community  = shoreside
 //LatOrigin   = 24.791721545708782
 //LongOrigin  = 120.99517822265625
 LatOrigin  = 24.787965
 LongOrigin = 121.001880
-#include plug_origin_warp.moos
+MOOSTimeWarp = 1
+LatOrigin  = 43.825300 
+LongOrigin = -70.330400 
+
+
   
 //--------------------------------------------------------
 Processconfig = ANTLER
@@ -25,12 +34,85 @@ Processconfig = ANTLER
   Run = pPointAssign    @ NewConsole = true
 }
 
-#include plug_pShare.moos
-#include plug_pHostInfo.moos
-#include plug_pLogger.moos
-#include plug_uTimerScript.moos 
-#include plug_pPointAssign.moos 
-#include plug_pGenPath.moos 
+//---------------------------------------------------------
+// pShare Config Block  (Created from Plugin)
+
+ProcessConfig = pShare
+{
+  AppTick    = 2
+  CommsTick  = 2
+
+  input = route =  localhost:9300
+}
+
+
+//--------------------------------------------------
+// pHostInfo configuration block from plugin
+
+ProcessConfig = pHostInfo
+{
+  AppTick 	= 1
+  CommsTick 	= 1
+
+  DEFAULT_HOSTIP_FORCE = localhost
+}
+
+
+//--------------------------------------------------
+// pLogger Configuration Block (Created from Plugin)
+
+ProcessConfig = pLogger
+{
+  AppTick 	= 10
+  CommsTick 	= 10
+  
+  File		= LOG_SHORESIDE
+  PATH		= ./
+  AsyncLog 	= true
+  FileTimeStamp = true
+
+  // Log it all!!!!!
+  LogAuxSrc       = true
+  WildCardLogging = true 
+
+  WildCardOmitPattern = *_STATUS
+
+  CompressAlogs = false
+}
+
+//----------------------------------------------------------
+ProcessConfig = uTimerScript
+{
+    paused       = true
+    condition   = UTIMERSTART  = true
+    rand_var    = varname=RND_VAL_X, min=-10, max=50, key=at_post
+    rand_var    = varname=RND_VAL_Y, min=-75,max=-15, key=at_post
+    event = var=VISIT_POINT, val="first_point", time=0
+    event = var=VISIT_POINT, val="x=$[RND_VAL_X], y=$[RND_VAL_Y], id=$[TCOUNT]", time=0, amt=30
+    event = var=VISIT_POINT, val="lastpoint", time=0
+}
+
+ProcessConfig = pPointAssign
+{
+   AppTick   = 4
+   CommsTick = 4
+ASSIGN_BY_REGION = TRUE    
+VNAME1 = HENRY
+VNAME2 = GILDA
+}
+
+
+
+//------------------------------------------------
+// pGenPath config block
+
+ProcessConfig = pGenPath
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+
+
 //--------------------------------------------------
 // uFldShoreBroker Configuration Block
 
@@ -95,4 +177,6 @@ ProcessConfig = pMarineViewer
   BUTTON_FOUR  = STATION_KEEP_ALL = false 
   BUTTON_FOUR  = LOITER_ALL = false 
 }
+
+
 

@@ -3,9 +3,9 @@ ProcessConfig = uTimerScript
 {
     paused       = true
     condition   = UTIMERSTART  = true
-    rand_var    = varname=RND_VAL_X, min=-25, max=200, key=at_post
-    rand_var    = varname=RND_VAL_Y, min=-175,max=-25, key=at_post
+    rand_var    = varname=RND_VAL_X, min=-10, max=50, key=at_post
+    rand_var    = varname=RND_VAL_Y, min=-75,max=-15, key=at_post
     event = var=VISIT_POINT, val="first_point", time=0
-    event = var=VISIT_POINT, val="x=$[RND_VAL_X], y=$[RND_VAL_Y], id=$[TCOUNT]", time=0, amt=100
+    event = var=VISIT_POINT, val="x=$[RND_VAL_X], y=$[RND_VAL_Y], id=$[TCOUNT]", time=0, amt=30
     event = var=VISIT_POINT, val="lastpoint", time=0
 }

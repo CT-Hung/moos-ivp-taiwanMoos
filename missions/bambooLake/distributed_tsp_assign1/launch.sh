@@ -26,7 +26,7 @@ done
 VNAME1="gilda"  
 VNAME2="henry"  
 START_POS1="0,0"    
-START_POS2="80,0"   
+START_POS2="40,0"   
 LOITER_POS1="x=0,y=-75"
 LOITER_POS2="x=125,y=-50"
 
