@@ -1,8 +1,8 @@
 /****************************************************************/
 /*   NAME: tychien                                             */
-/*   ORGN: MIT, Cambridge MA                                    */
+/*   ORGN: MIT Cambridge MA                                     */
 /*   FILE: GenPath_Info.cpp                               */
-/*   DATE: December 29th, 1963                                  */
+/*   DATE: Dec 29th 1963                                        */
 /****************************************************************/
 
 #include <cstdlib>

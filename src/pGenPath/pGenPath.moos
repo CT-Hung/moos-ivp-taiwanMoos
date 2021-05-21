@@ -1,3 +1,17 @@
+ServerHost  = localhost
+ServerPort  = 9000
+Community   = genpath
+
+//------------------------------------------------
+ProcessConfig = ANTLER
+{
+    Run = MOOSDB            @ NewConsole = false
+    Run = pPointAssign      @ NewConsole = false
+    Run = pGenPath          @ NewConsole = true
+    Run = uTimerScript      @ NewConsole = false
+    Run = uXMS              @ NewConsole = true 
+}
+
 //------------------------------------------------
 // pGenPath config block
 
@@ -7,3 +21,24 @@ ProcessConfig = pGenPath
    CommsTick = 4
 }
 
+//------------------------------------------------
+ProcessConfig = uTimerScript
+{
+    paused      = true
+    condition = UTIMERSTART = true
+    rand_var    =   varname=RAND_VAL_X, min=-25,    max=200,    key=at_post
+    rand_var    =   varname=RAND_VAL_Y, min=-175,   max=-25,    key=at_post
+    event = var =   VISIT_POINT, val="first_point",   time=0
+    event = var =   VISIT_POINT, val="x=$[RAND_VAL_X], y=$[RAND_VAL_Y], id=$[TCOUNT]", time=0,   amt=100
+    event = var =   VISIT_POINT, val="lastpoint", time=0 
+}
+
+//-------------------------------------------------
+ProcessConfig = uXMS
+{
+    AppTick     = 4
+    CommsTick   = 4
+    VAR = VISIT_POINT, VISIT_ASSIGN
+}
+
+//-------------------------------------------------

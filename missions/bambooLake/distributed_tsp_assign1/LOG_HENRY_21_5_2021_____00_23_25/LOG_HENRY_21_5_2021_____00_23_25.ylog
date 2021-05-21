@@ -1,0 +1,25 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LOG FILE:       ./LOG_HENRY_21_5_2021_____00_23_25/LOG_HENRY_21_5_2021_____00_23_25.ylog
+%% FILE OPENED ON  Wed Dec 31 19:00:00 1969
+%% LOGSTART               1621571004.58
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+0.899894   MOOS_DEBUG           pMarinePID           ** NEW CONTROLLER GAINS ARE ** 
+0.899924   MOOS_DEBUG           pMarinePID           YAW_PID_KP             = 0.400 
+0.8999331  MOOS_DEBUG           pMarinePID           YAW_PID_KD             = 0.100 
+0.899941   MOOS_DEBUG           pMarinePID           YAW_PID_KI             = 0.000 
+0.8999481  MOOS_DEBUG           pMarinePID           YAW_PID_INTEGRAL_LIMIT = 0.070 
+0.8999581  MOOS_DEBUG           pMarinePID           MAXRUDDER              = 100.000 
+0.901329   MOOS_DEBUG           pMarinePID           SPEED_PID_KP           = 1.000 
+0.9013541  MOOS_DEBUG           pMarinePID           SPEED_PID_KD           = 0.000 
+0.9013619  MOOS_DEBUG           pMarinePID           SPEED_PID_KI           = 0.000 
+0.901371   MOOS_DEBUG           pMarinePID           SPEED_PID_INTEGRAL_LIMIT = 0.070 
+0.901381   MOOS_DEBUG           pMarinePID           MAXTHRUST              = 100.000 
+1.001898   MOOS_DEBUG           pMarinePID           Paused Due To Tardy HELM Input: THRUST=0 
+1.256711   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: ManualOverride 
+1.256711   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: ManualOverride 
+1.256711   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: ManualOverride 
+3.30795    MOOS_DEBUG           pMarinePID           Paused Due To Tardy HELM Input: THRUST=0 
+3.30795    MOOS_DEBUG           pMarinePID           Paused Due To Tardy HELM Input: THRUST=0 
+38.29015   MOOS_DEBUG           pHelmIvP             pHelmIvP AllStop: clear 
+38.30305   MOOS_DEBUG           pMarinePID           pMarinePID Control Is On 
+38.30305   MOOS_DEBUG           pMarinePID           pMarinePID Control Is On 
