@@ -48,7 +48,7 @@ Behavior = BHV_Waypoint
    // Parameters specific to this behavior
    // ------------------------------------
 //              points = $(START_POS)  // example
-              points = pts = {20,-20:40,-50:50,-90}
+              points = pts = {675,-420:680,-430:685,-440}
          post_suffix = HENRY                   // example
               repeat = 2                       // default
          slip_radius = 15                      // default
