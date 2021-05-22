@@ -21,8 +21,8 @@ ProcessConfig = ANTLER
   Run = MOOSDB          @ NewConsole = false
   Run = pShare          @ NewConsole = false
   Run = pLogger         @ NewConsole = false
-  Run = pMarineViewer	@ NewConsole = false
-  Run = uProcessWatch	@ NewConsole = false
+  Run = pMarineViewer 	@ NewConsole = false
+  Run = uProcessWatch	  @ NewConsole = false
   //Run = pNodeReporter	  @ NewConsole = false
   Run = pRealm	        @ NewConsole = false
 
@@ -49,7 +49,7 @@ ProcessConfig = pShare
   input = route =  localhost:9306   //foxtrot
   input = route =  localhost:9307   //golf
 
-  //output = src_name = NODE_REPORT_LOCAL, dest_name=NODE_REPORT_LOCAL, route=192.168.50.11:9301
+  //output = src_name = NODE_REPORT_LOCAL, dest_name=NODE_REPORT_LOCAL, route=192.168.1.10:9301
 }
 
 //------------------------------------------
@@ -156,12 +156,15 @@ ProcessConfig = uXMS
   AppTick   = 4
   CommsTick = 4
 
-  VAR            = START_TEMP_MEASURE,NAV_X,NAV_Y,NAV_LAT,NAV_LONG,NAV_HEADING,NAV_SPEED,NODE_REPORT_LOCAL,UCTD_SENSOR_REQUEST,UCTD_TEMP_REPORT_ALPHA,UCTD_TEMP_REPORT_BRAVO
+  VAR            = NODE_REPORT_LOCAL,UCTD_SENSOR_REQUEST,UCTD_TEMP_REPORT_ALPHA,UCTD_TEMP_REPORT_BRAVO,UCTD_TEMP_REPORT_CHARLIE,UCTD_TEMP_REPORT_DELTA,UCTD_TEMP_REPORT_ECHO
 
   COLOR_MAP      = NODE_REPORT_LOCAL, blue
   COLOR_MAP      = UCTD_SENSOR_REQUEST, blue
   COLOR_MAP      = UCTD_TEMP_REPORT_ALPHA, red
   COLOR_MAP      = UCTD_TEMP_REPORT_BRAVO, red
+  COLOR_MAP      = UCTD_TEMP_REPORT_CHARLIE, red
+  COLOR_MAP      = UCTD_TEMP_REPORT_DELTA, red
+  COLOR_MAP      = UCTD_TEMP_REPORT_ECHO, red
 }
 
 //--------------------------------------------------

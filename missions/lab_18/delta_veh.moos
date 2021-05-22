@@ -38,8 +38,8 @@ ProcessConfig = pShare
 
   //input = route =  localhost:9300
 
-  output = src_name = NODE_REPORT_LOCAL, dest_name=NODE_REPORT_LOCAL, route=192.168.50.100:9304
-  output = src_name = UCTD_SENSOR_REQUEST, dest_name=UCTD_SENSOR_REQUEST, route=192.168.50.100:9304
+  output = src_name = NODE_REPORT_LOCAL, dest_name=NODE_REPORT_LOCAL, route=192.168.1.138:9304
+  output = src_name = UCTD_SENSOR_REQUEST, dest_name=UCTD_SENSOR_REQUEST, route=192.168.1.138:9304
 }
 
 //------------------------------------------
