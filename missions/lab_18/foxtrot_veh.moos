@@ -1,0 +1,75 @@
+//-------------------------------------------------
+// NAME: M. Benjamin, MIT CSAIL
+// FILE: foxtrot_veh.moos
+//-------------------------------------------------
+
+ServerHost   = localhost
+ServerPort   = 9006
+Community    = foxtrot
+MOOSTimeWarp = 1
+
+// Bamboo
+LatOrigin  = 24.78797733
+LongOrigin = 121.00186927
+
+//------------------------------------------
+// Antler configuration  block
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB              @ NewConsole = false
+  Run = pShare              @ NewConsole = false
+  Run = pNodeReporter	      @ NewConsole = false
+  Run = pGradeFrontEstimate @ NewConsole = false
+  Run = pSensorRequest      @ NewConsole = false
+}
+
+//---------------------------------------------------------
+// pShare Config Block
+
+ProcessConfig = pShare
+{
+  AppTick    = 2
+  CommsTick  = 2
+
+  //input = route =  localhost:9300
+
+  output = src_name = NODE_REPORT_LOCAL, dest_name=NODE_REPORT_LOCAL, route=192.168.1.138:9306
+  output = src_name = UCTD_SENSOR_REQUEST, dest_name=UCTD_SENSOR_REQUEST, route=192.168.1.138:9306
+}
+
+//#include plug_uFldCTDSensor.moos
+#include plug_uFldCTDSensor_1.moos
+
+//------------------------------------------
+// pNodeReporter config block
+
+ProcessConfig = pNodeReporter
+{
+  AppTick    = 2
+  CommsTick	 = 2
+
+  platform_type   = kayak
+  platform_color  = khaki
+  platform_length = 4
+}
+
+//------------------------------------------
+// pSensorRequest config block
+
+ProcessConfig = pSensorRequest
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+
+//--------------------------------------------------
+// pGradeFrontEstiamte Configuration Block
+
+ProcessConfig = pGradeFrontEstimate
+{
+  AppTick=1
+  CommsTick = 1
+
+}
