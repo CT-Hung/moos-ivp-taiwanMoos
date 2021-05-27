@@ -27,6 +27,7 @@ ProcessConfig = ANTLER
   Run = uProcessWatch	@ NewConsole = false
   Run = pNodeReporter	@ NewConsole = false
   Run = pRealm	      @ NewConsole = false
+  Run = pDiffThrustControl @ NewConsole = false
 }
 
 //------------------------------------------
@@ -204,3 +205,14 @@ ProcessConfig = pNodeReporter
   platform_length = 4
 }
 
+//------------------------------------------------
+// pDiffThrustControl config block
+
+ProcessConfig = pDiffThrustControl
+{
+   AppTick   = 4
+   CommsTick = 4
+
+   max_rudder = 90
+   max_thrust = 100
+}
