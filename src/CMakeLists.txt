@@ -23,6 +23,7 @@ ADD_SUBDIRECTORY(pPrimeFactor)
 ADD_SUBDIRECTORY(pCommunicationAngle)
 ADD_SUBDIRECTORY(pPointAssign)
 ADD_SUBDIRECTORY(pSensorRequest)
+ADD_SUBDIRECTORY(pDiffThrustControl)
 ##############################################################################
 #                           END of CMakeLists.txt
 ##############################################################################

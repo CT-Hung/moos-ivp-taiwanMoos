@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pDiffThrustControl config block
+
+ProcessConfig = pDiffThrustControl
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+
