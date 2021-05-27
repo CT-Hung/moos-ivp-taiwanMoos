@@ -32,6 +32,7 @@ ProcessConfig = ANTLER
   Run = uFldCTDSensor       @ NewConsole = false
   Run = pFrontGridRender    @ NewConsole = false
   Run = pGradeFrontEstimate @ NewConsole = false
+  Run = pSensorRequest      @ NewConsole = false
 }
 
 //#include plug_uFldCTDSensor.moos
@@ -220,7 +221,7 @@ ProcessConfig = pDiffThrustControl
    AppTick   = 4
    CommsTick = 4
 
-   max_rudder = 90
+   max_rudder = 100
    max_thrust = 100
 }
 
@@ -271,4 +272,13 @@ ProcessConfig = uFldCTDSensor
   temperature_north = 16
   temperature_south = 29
   sigma = 0.01
+}
+
+//------------------------------------------
+// pSensorRequest config block
+
+ProcessConfig = pSensorRequest
+{
+   AppTick   = 4
+   CommsTick = 4
 }
