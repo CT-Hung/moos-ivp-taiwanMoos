@@ -73,8 +73,6 @@ bool iM200::ThrustRudderToLR()
   double desiredRudder = clamp (m_des_rudder, (-1.0 * m_dMaxRudder), m_dMaxRudder);
   double desiredThrust = clamp (m_des_thrust, (-1.0 * MAX_THRUST), MAX_THRUST);
 
-  cout << "desiredRudder: " << desiredRudder << ", desiredThrust: " << desiredThrust << endl;
-
   if (fabs(m_zAngularV) >= m_angularMax && m_zAngularV > 0 && m_des_rudder > 0)
     m_des_rudder = m_des_rudder*m_rudderGain;
   else if (fabs(m_zAngularV) >= m_angularMax && m_zAngularV < 0 && m_des_rudder < 0)
