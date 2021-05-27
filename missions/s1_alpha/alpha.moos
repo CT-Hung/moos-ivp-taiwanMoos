@@ -28,7 +28,14 @@ ProcessConfig = ANTLER
   Run = pNodeReporter	@ NewConsole = false
   Run = pRealm	      @ NewConsole = false
   Run = pDiffThrustControl @ NewConsole = false
+
+  Run = uFldCTDSensor       @ NewConsole = false
+  Run = pFrontGridRender    @ NewConsole = false
+  Run = pGradeFrontEstimate @ NewConsole = false
 }
+
+//#include plug_uFldCTDSensor.moos
+#include plug_uFldCTDSensor_1.moos
 
 //------------------------------------------
 // pLogger config block
@@ -215,4 +222,53 @@ ProcessConfig = pDiffThrustControl
 
    max_rudder = 90
    max_thrust = 100
+}
+
+//--------------------------------------------------
+// pGradeFrontEstiamte Configuration Block
+
+ProcessConfig = pGradeFrontEstimate
+{
+  AppTick=1
+  CommsTick = 1
+
+}
+
+//--------------------------------------------------
+// pFrontGridRender Configuration Block
+
+ProcessConfig = pFrontGridRender
+{
+  AppTick       = 1
+  CommsTick     = 1
+
+  grid_config = pts={-95,-170: 85,-170: 85,10: -95,10}
+  grid_config = cell_size=3
+  grid_config = cell_vars=x:0
+}
+
+//--------------------------------------------------
+// uFldGenericSensor configuration block from plugin
+
+ProcessConfig = uFldCTDSensor
+{
+  AppTick   = 3
+  CommsTick = 3
+
+   // Configuring Artificial Noise                               
+  xmin  = 0       
+  xmax  = 500       
+  ymin  = -400       
+  ymax  =  0  
+     
+  offset = -30
+  angle  = 30
+  amplitude = 34
+  period = 40
+  wavelength = 80
+  alpha = 350
+  beta = 15
+  temperature_north = 16
+  temperature_south = 29
+  sigma = 0.01
 }
