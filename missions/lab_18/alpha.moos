@@ -29,8 +29,8 @@ ProcessConfig = ANTLER
   //Run = MOOSDB        @ NewConsole = false
   Run = pLogger       @ NewConsole = false
   //Run = uSimMarine    @ NewConsole = false
-  //Run = pMarinePID    @ NewConsole = false
-  //Run = pHelmIvP      @ NewConsole = false
+  Run = pMarinePID    @ NewConsole = false
+  Run = pHelmIvP      @ NewConsole = false
   Run = pMarineViewer	@ NewConsole = false
   Run = uProcessWatch	@ NewConsole = false
   Run = pNodeReporter	@ NewConsole = false
@@ -42,6 +42,8 @@ ProcessConfig = ANTLER
 
   Run = uXMS            @ NewConsole = true 
   Run = pSensorRequest  @ NewConsole = false
+
+  Run = pDiffThrustControl @ NewConsole = false
 }
 
 //#include plug_uFldCTDSensor.moos
@@ -325,4 +327,16 @@ ProcessConfig = pFrontGridRender
   GRID_CONFIG = pts={-95,-170: 85,-170: 85,10: -95,10}
   GRID_CONFIG = cell_size=3
   GRID_CONFIG = cell_vars=x:0
+}
+
+//------------------------------------------------
+// pDiffThrustControl config block
+
+ProcessConfig = pDiffThrustControl
+{
+   AppTick   = 4
+   CommsTick = 4
+
+   max_rudder = 100
+   max_thrust = 100
 }
