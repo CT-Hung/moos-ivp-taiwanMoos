@@ -20,7 +20,7 @@ ProcessConfig = ANTLER
 
   Run = MOOSDB        @ NewConsole = false
   Run = pLogger       @ NewConsole = false
-  Run = uSimMarine    @ NewConsole = false
+  //Run = uSimMarine    @ NewConsole = false
   Run = pMarinePID    @ NewConsole = false
   Run = pHelmIvP      @ NewConsole = false
   Run = pMarineViewer	@ NewConsole = false
@@ -33,6 +33,8 @@ ProcessConfig = ANTLER
   Run = pFrontGridRender    @ NewConsole = false
   Run = pGradeFrontEstimate @ NewConsole = false
   Run = pSensorRequest      @ NewConsole = false
+
+  Run = uXMS            @ NewConsole = true 
 }
 
 //#include plug_uFldCTDSensor.moos
@@ -121,7 +123,7 @@ ProcessConfig = pMarinePID
 
   // Yaw PID controller
   //yaw_pid_kp		 = 1.2
-  yaw_pid_kp		 = 0.7
+  yaw_pid_kp		 = 5
   //yaw_pid_kd		 = 0.0
   yaw_pid_kd		 = 0.1
   //yaw_pid_ki		 = 0.3
@@ -151,8 +153,8 @@ ProcessConfig = pMarineViewer
   AppTick    = 4
   CommsTick  = 4
 
-  tiff_file            = bamboo_17_map.tif
-  tiff_file_b          = bamboo_17_sat.tif
+  tiff_file_b            = bamboo_17_map.tif
+  tiff_file          = bamboo_17_sat.tif
   set_pan_x            = -85
   set_pan_y            = -40
   zoom                 = 6
@@ -284,4 +286,20 @@ ProcessConfig = pSensorRequest
 {
    AppTick   = 4
    CommsTick = 4
+}
+
+//------------------------------------------
+// uXMS config block
+
+ProcessConfig = uXMS
+{
+  AppTick   = 4
+  CommsTick = 4
+
+  //VAR            = NODE_REPORT_LOCAL,UCTD_SENSOR_REQUEST,UCTD_TEMP_REPORT_ALPHA,UCTD_TEMP_REPORT_BRAVO,UCTD_TEMP_REPORT_CHARLIE,UCTD_TEMP_REPORT_DELTA,UCTD_TEMP_REPORT_ECHO
+  VAR            = NODE_REPORT_LOCAL,UCTD_SENSOR_REQUEST,UCTD_TEMP_REPORT_ALPHA, ROS_THRUST_L, ROS_THRUST_R
+
+  COLOR_MAP      = NODE_REPORT_LOCAL, blue
+  COLOR_MAP      = UCTD_SENSOR_REQUEST, blue
+  COLOR_MAP      = UCTD_TEMP_REPORT_ALPHA, red
 }
